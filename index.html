@@ -140,7 +140,8 @@
       border: 1px solid var(--border); padding: 0.8rem 1.75rem;
       border-radius: 100px; font-size: 0.9rem; font-weight: 600;
       cursor: pointer; text-decoration: none;
-      transition: border-color 0.2s;
+      display: inline-flex; align-items: center; justify-content: center; text-align: center;
+      transition: border-color 0.2s, color 0.2s;
     }
     .btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
 
@@ -207,7 +208,7 @@
     .section-desc { font-size: 0.95rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; }
 
     /* ─── ABOUT CARDS ─── */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
     .about-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 1.75rem;
@@ -225,13 +226,28 @@
     .about-card.highlight h3 { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
     /* ─── TIMELINE ─── */
-    .timeline { display: flex; flex-direction: column; }
+    .timeline { display: flex; flex-direction: column; padding-left: 1.6rem; }
     .timeline-item {
       display: grid; grid-template-columns: 140px 1fr;
       gap: 2rem; padding: 2rem 0;
       border-bottom: 1px solid var(--border);
+      position: relative;
     }
     .timeline-item:last-child { border-bottom: none; }
+
+    /* dot para todos los items */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.6rem;
+      top: 2.45rem;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--muted);
+      border: 2px solid var(--bg);
+      z-index: 2;
+    }
+
     .timeline-date { font-size: 0.75rem; color: var(--muted); font-weight: 500; padding-top: 4px; line-height: 1.5; }
     .timeline-content { display: flex; flex-direction: column; gap: 0.4rem; }
     .timeline-company {
@@ -246,6 +262,28 @@
       background: rgba(244,114,182,0.1); border: 1px solid rgba(244,114,182,0.25);
       color: var(--pink-soft); font-size: 0.7rem; font-weight: 600;
       padding: 0.2rem 0.7rem; border-radius: 100px; width: fit-content;
+    }
+
+    /* ─── TIMELINE GROUP (mismo empleador) ─── */
+    .timeline-group {
+      position: relative;
+    }
+    /* sin dots para items del grupo */
+    .timeline-group .timeline-item::before { display: none; }
+    /* línea conectora entre items del mismo empleador */
+    .timeline-group::before {
+      content: '';
+      position: absolute;
+      left: -1.155rem; /* center del dot: -1.6rem + 4.5px */
+      top: calc(2.45rem + 9px);
+      bottom: calc(2.45rem + 9px);
+      width: 2px;
+      background: linear-gradient(to bottom, #f472b6, #c084fc);
+      border-radius: 2px;
+      z-index: 1;
+    }
+    .timeline-group .timeline-item:not(:last-child) {
+      border-bottom: 1px solid rgba(244,114,182,0.12);
     }
 
     /* ─── SKILLS ─── */
@@ -356,6 +394,11 @@
       width: 250px; height: 250px; border-radius: 50%;
       background: rgba(244,114,182,0.08); pointer-events: none;
     }
+    .contact-box::after {
+      content: ''; position: absolute; bottom: -60px; left: -60px;
+      width: 200px; height: 200px; border-radius: 50%;
+      background: rgba(192,132,252,0.07); pointer-events: none;
+    }
     .contact-box h2 {
       font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;
       background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
@@ -384,7 +427,7 @@
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-photo-wrap { width: 220px; height: 265px; margin: 0 auto; }
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card.featured { grid-column: 1; }
       .personal-grid { grid-template-columns: 1fr; }
@@ -408,8 +451,8 @@
     <ul class="nav-links">
       <li><a href="#about" data-i18n="nav_about">About</a></li>
       <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
-      <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
       <li><a href="#projects" data-i18n="nav_proj">Projects</a></li>
+      <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
       <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -433,7 +476,7 @@
     </h1>
     <p class="hero-sub" data-i18n="hero_sub">
       Systems Engineering student (4th year) already working in the AI industry —
-      <strong>ensuring data accuracy </strong> at ITPipes.
+      <strong>ensuring data accuracy</strong> at ITPipes.<br/>
       Bilingual English–Spanish (C2).
     </p>
     <div class="hero-cta">
@@ -445,13 +488,6 @@
   <div class="hero-photo-wrap">
     <div class="hero-photo">
       <img src="https://media.licdn.com/dms/image/v2/D4D03AQEAYFyTmaJyIA/profile-displayphoto-crop_800_800/B4DZ0iD1n1JoAI-/0/1774392925296?e=1780531200&v=beta&t=dy_NMsHr2pKm0j1SNy6XY1STGjf6joU-BJTLZMbYO0g" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Guardá tu foto como<br><strong>photo.jpg</strong><br>en la misma carpeta</span></div>'"/>
-    </div>
-    <div class="hero-stack-badge">
-      <div class="badge-icon">✦</div>
-      <div class="badge-text">
-        <span class="badge-label" data-i18n="badge_label">Currently at</span>
-        <span class="badge-value">ITPipes · Senior BQA</span>
-      </div>
     </div>
   </div>
 </div>
@@ -466,7 +502,7 @@
   <p class="section-desc" data-i18n="about_desc">Already working in the AI industry while finishing my degree — combining technical skills with real business experience.</p>
   <div class="about-grid">
     <div class="about-card highlight">
-      <span class="icon">🤖</span>
+      <span class="icon">🧠</span>
       <h3 data-i18n="about_c1_title">AI &amp; Data Quality</h3>
       <p data-i18n="about_c1_desc">Validating datasets for AI model training at ITPipes under NASSCO standards. I make sure AI learns from clean, reliable data.</p>
     </div>
@@ -476,14 +512,46 @@
       <p data-i18n="about_c2_desc">Studying at Universidad Abierta Interamericana with hands-on experience in SQL Server, .NET, Python and C++.</p>
     </div>
     <div class="about-card">
-      <span class="icon">🌎</span>
-      <h3 data-i18n="about_c3_title">Bilingual — English C2</h3>
-      <p data-i18n="about_c3_desc">Cambridge First Certificate (C1 Grade A) + EF SET 81/100 (C2). Comfortable in fully English-speaking environments.</p>
-    </div>
-    <div class="about-card">
       <span class="icon">📊</span>
       <h3 data-i18n="about_c4_title">Business + Tech Mindset</h3>
       <p data-i18n="about_c4_desc">Experience bridging data pipelines and business operations — from logistics reporting to client-facing team leadership.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">🤖</span>
+      <h3 data-i18n="pers_c1_title">Robotics Enthusiast</h3>
+      <p data-i18n="pers_c1_desc">I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">🗣️</span>
+      <h3 data-i18n="pers_c2_title">Former English Teacher</h3>
+      <p data-i18n="pers_c2_desc">I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.</p>
+    </div>
+    <div class="about-card">
+      <span class="icon">🤝</span>
+      <h3 data-i18n="pers_c3_title">People Person</h3>
+      <p data-i18n="pers_c3_desc">Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a codebase.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="divider"/>
+
+<!-- LANGUAGES -->
+<div class="section-wrap">
+<section id="languages">
+  <p class="section-label" data-i18n="lang_label">Languages</p>
+  <h2 class="section-title" data-i18n="lang_title">I speak your language.</h2>
+  <div class="lang-cards">
+    <div class="lang-card">
+      <div class="lang-name" data-i18n="lang1_name">Spanish</div>
+      <span class="lang-level" data-i18n="lang1_level">Native</span>
+      <p class="lang-desc" data-i18n="lang1_desc">Native speaker. Fluent in professional, technical, and everyday contexts.</p>
+    </div>
+    <div class="lang-card">
+      <div class="lang-name" data-i18n="lang2_name">English</div>
+      <span class="lang-level">C2 Proficient</span>
+      <p class="lang-desc" data-i18n="lang2_desc">Cambridge C1 Grade A · EF SET 81/100. Fully comfortable in English-only environments, meetings and written communication.</p>
     </div>
   </div>
 </section>
@@ -498,23 +566,27 @@
   <h2 class="section-title" data-i18n="exp_title">Where I've worked.</h2>
   <div class="timeline">
 
-    <div class="timeline-item">
-      <span class="timeline-date">May 2026 — <span data-i18n="present">Present</span></span>
-      <div class="timeline-content">
-        <span class="timeline-company">ITPipes</span>
-        <span class="timeline-role">Senior Business Quality Analyst</span>
-        <p class="timeline-desc" data-i18n="exp0_desc">Promoted to Senior BQA — leading quality control processes and raising data standards for AI pipelines across the team.</p>
-        <span class="timeline-tag" data-i18n="exp0_tag">🏆 Promoted</span>
-      </div>
-    </div>
+    <!-- ITPipes group con línea conectadora -->
+    <div class="timeline-group">
 
-    <div class="timeline-item">
-      <span class="timeline-date">Sep 2025 — May 2026</span>
-      <div class="timeline-content">
-        <span class="timeline-company">ITPipes</span>
-        <span class="timeline-role">Business Quality Analyst</span>
-        <p class="timeline-desc" data-i18n="exp1_desc">Validated and quality-controlled pipeline inspection datasets under NASSCO standards, ensuring data integrity prior to AI model ingestion.</p>
-        <span class="timeline-tag" data-i18n="exp1_tag">AI &amp; Data Quality</span>
+      <div class="timeline-item">
+        <span class="timeline-date">May 2026 — <span data-i18n="present">Present</span></span>
+        <div class="timeline-content">
+          <span class="timeline-company">ITPipes</span>
+          <span class="timeline-role">Senior Business Quality Analyst</span>
+          <p class="timeline-desc" data-i18n="exp0_desc">Promoted to Senior BQA — leading quality control processes and raising data standards for AI pipelines across the team.</p>
+          <span class="timeline-tag" data-i18n="exp0_tag">🏆 Promoted</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <span class="timeline-date">Sep 2025 — May 2026</span>
+        <div class="timeline-content">
+          <span class="timeline-company">ITPipes</span>
+          <span class="timeline-role">Business Quality Analyst</span>
+          <p class="timeline-desc" data-i18n="exp1_desc">Validated and quality-controlled pipeline inspection datasets under NASSCO standards, ensuring data integrity prior to AI model ingestion.</p>
+          <span class="timeline-tag" data-i18n="exp1_tag">AI &amp; Data Quality</span>
+        </div>
       </div>
     </div>
 
@@ -538,44 +610,6 @@
       </div>
     </div>
 
-  </div>
-</section>
-</div>
-
-<hr class="divider"/>
-
-<!-- SKILLS -->
-<div class="section-wrap">
-<section id="skills">
-  <p class="section-label" data-i18n="skills_label">Technical Skills</p>
-  <h2 class="section-title" data-i18n="skills_title">My toolkit.</h2>
-  <p class="section-desc" data-i18n="skills_desc">From data analysis to desktop apps — the tools I use to build and ship things.</p>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <span class="skill-icon">🐍</span>
-      <h4>Python</h4>
-      <p data-i18n="skill1_desc">Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.</p>
-    </div>
-    <div class="skill-card">
-      <span class="skill-icon">🗄️</span>
-      <h4>SQL Server</h4>
-      <p data-i18n="skill2_desc">Relational DB design, stored procedures and C# integration.</p>
-    </div>
-    <div class="skill-card">
-      <span class="skill-icon">💻</span>
-      <h4>C# / .NET</h4>
-      <p data-i18n="skill3_desc">Desktop apps with Windows Forms and OOP principles.</p>
-    </div>
-    <div class="skill-card">
-      <span class="skill-icon">⚙️</span>
-      <h4>C++</h4>
-      <p data-i18n="skill4_desc">Performance programming, data structures, memory management.</p>
-    </div>
-    <div class="skill-card">
-      <span class="skill-icon">🔗</span>
-      <h4>n8n / AI Agents</h4>
-      <p data-i18n="skill5_desc">Automated AI agent workflows and integrations.</p>
-    </div>
   </div>
 </section>
 </div>
@@ -640,28 +674,37 @@
 
 <hr class="divider"/>
 
-<!-- PERSONAL -->
+<!-- SKILLS -->
 <div class="section-wrap">
-<section id="personal">
-  <p class="section-label" data-i18n="pers_label">Beyond the work</p>
-  <h2 class="section-title" data-i18n="pers_title">A bit about me.</h2>
-  <p class="section-desc" data-i18n="pers_desc">Technical skills get you in the door — but these are the things that make me different to work with.</p>
-
-  <div class="personal-grid">
-    <div class="personal-card">
-      <span class="p-icon">🤖</span>
-      <h4 data-i18n="pers_c1_title">Robotics Enthusiast</h4>
-      <p data-i18n="pers_c1_desc">I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.</p>
+<section id="skills">
+  <p class="section-label" data-i18n="skills_label">Technical Skills</p>
+  <h2 class="section-title" data-i18n="skills_title">My toolkit.</h2>
+  <p class="section-desc" data-i18n="skills_desc">From data analysis to desktop apps — the tools I use to build and ship things.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-icon">🐍</span>
+      <h4>Python</h4>
+      <p data-i18n="skill1_desc">Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.</p>
     </div>
-    <div class="personal-card">
-      <span class="p-icon">🗣️</span>
-      <h4 data-i18n="pers_c2_title">Former English Teacher</h4>
-      <p data-i18n="pers_c2_desc">I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.</p>
+    <div class="skill-card">
+      <span class="skill-icon">🗄️</span>
+      <h4>SQL Server</h4>
+      <p data-i18n="skill2_desc">Relational DB design, stored procedures and C# integration.</p>
     </div>
-    <div class="personal-card">
-      <span class="p-icon">🤝</span>
-      <h4 data-i18n="pers_c3_title">People Person</h4>
-      <p data-i18n="pers_c3_desc">Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a codebase.</p>
+    <div class="skill-card">
+      <span class="skill-icon">💻</span>
+      <h4>C# / .NET</h4>
+      <p data-i18n="skill3_desc">Desktop apps with Windows Forms and OOP principles.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">⚙️</span>
+      <h4>C++</h4>
+      <p data-i18n="skill4_desc">Performance programming, data structures, memory management.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🔗</span>
+      <h4>n8n / AI Agents</h4>
+      <p data-i18n="skill5_desc">Automated AI agent workflows and integrations.</p>
     </div>
   </div>
 </section>
@@ -669,7 +712,7 @@
 
 <hr class="divider"/>
 
-<!-- CERTS -->
+<!-- CERTIFICATIONS -->
 <div class="section-wrap">
 <section id="certifications">
   <p class="section-label" data-i18n="certs_label">Certifications</p>
@@ -684,32 +727,8 @@
     <div class="cert-card"><div class="cert-logo">🌐</div><div><span class="cert-name">Computer Network</span><span class="cert-issuer">Huawei ICT Academy</span></div></div>
     <div class="cert-card"><div class="cert-logo">📊</div><div><span class="cert-name">Foundations: Data, Data, Everywhere</span><span class="cert-issuer">Coursera / Google</span></div></div>
     <div class="cert-card"><div class="cert-logo">📊</div><div><span class="cert-name">Ask Questions to Make Data-Driven Decisions</span><span class="cert-issuer">Coursera / Google</span></div></div>
-    <div class="cert-card"><div class="cert-logo">🇬🇧</div><div><span class="cert-name">First Certificate in English — C1 Grade A</span><span class="cert-issuer">Cambridge Assessment</span></div></div>
-    <div class="cert-card"><div class="cert-logo">🇬🇧</div><div><span class="cert-name">EF SET Certificate — 81/100 (C2)</span><span class="cert-issuer">EF Education First</span></div></div>
-  </div>
-</section>
-</div>
-
-<hr class="divider"/>
-
-<!-- LANGUAGES -->
-<div class="section-wrap">
-<section id="languages">
-  <p class="section-label" data-i18n="lang_label">Languages</p>
-  <h2 class="section-title" data-i18n="lang_title">I speak your language.</h2>
-  <div class="lang-cards">
-    <div class="lang-card">
-      <span class="lang-flag">🇦🇷</span>
-      <div class="lang-name" data-i18n="lang1_name">Spanish</div>
-      <span class="lang-level" data-i18n="lang1_level">Native</span>
-      <p class="lang-desc" data-i18n="lang1_desc">Native speaker. Fluent in professional, technical, and everyday contexts.</p>
-    </div>
-    <div class="lang-card">
-      <span class="lang-flag">🇺🇸</span>
-      <div class="lang-name" data-i18n="lang2_name">English</div>
-      <span class="lang-level">C2 Proficient</span>
-      <p class="lang-desc" data-i18n="lang2_desc">Cambridge C1 Grade A · EF SET 81/100. Fully comfortable in English-only environments, meetings and written communication.</p>
-    </div>
+    <div class="cert-card"><div class="cert-logo">📜</div><div><span class="cert-name">First Certificate in English — C1 Grade A</span><span class="cert-issuer">Cambridge Assessment</span></div></div>
+    <div class="cert-card"><div class="cert-logo">📜</div><div><span class="cert-name">EF SET Certificate — 81/100 (C2)</span><span class="cert-issuer">EF Education First</span></div></div>
   </div>
 </section>
 </div>
@@ -738,10 +757,10 @@
 <script>
 const t = {
   en: {
-    nav_about:"About", nav_exp:"Experience", nav_skills:"Skills", nav_proj:"Projects", nav_certs:"Certifications", nav_contact:"Contact",
+    nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
     hero_badge:"Open to opportunities",
     hero_title:"AI &amp; Data Analyst.",
-    hero_sub:`Systems Engineering student (4th year) already working in the AI industry — <strong>ensuring data accuracy </strong> at ITPipes. Bilingual English–Spanish (C2).`,
+    hero_sub:`Systems Engineering student (4th year) already working in the AI industry — <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
     badge_label:"Currently at",
     present:"Present",
@@ -756,6 +775,7 @@ const t = {
     about_c4_title:"Business + Tech Mindset",
     about_c4_desc:"Experience bridging data pipelines and business operations — from logistics reporting to client-facing team leadership.",
     exp_label:"Experience", exp_title:"Where I've worked.",
+    group_itpipes:"ITPipes — Growth path",
     exp0_desc:"Promoted to Senior BQA — leading quality control processes and raising data standards for AI pipelines across the team.",
     exp0_tag:"🏆 Promoted",
     exp1_desc:"Validated and quality-controlled pipeline inspection datasets under NASSCO standards, ensuring data integrity prior to AI model ingestion.",
@@ -801,10 +821,10 @@ const t = {
     footer:"Valentina Morana · 2026"
   },
   es: {
-    nav_about:"Sobre mí", nav_exp:"Experiencia", nav_skills:"Habilidades", nav_proj:"Proyectos", nav_certs:"Certificaciones", nav_contact:"Contacto",
+    nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
     hero_badge:"Abierta a oportunidades",
     hero_title:"Analista de IA &amp; Datos.",
-    hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA — <strong>garantizando la calidad de datos</strong> en ITPipes. Bilingüe inglés–español (C2).`,
+    hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA — <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
     badge_label:"Actualmente en",
     present:"Actualidad",
@@ -819,6 +839,7 @@ const t = {
     about_c4_title:"Mentalidad Técnica + Negocio",
     about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio — desde reporting logístico hasta liderazgo de equipos.",
     exp_label:"Experiencia", exp_title:"Dónde trabajé.",
+    group_itpipes:"ITPipes — Trayectoria de crecimiento",
     exp0_desc:"Ascendida a Senior BQA — liderando procesos de control de calidad y elevando los estándares de datos para pipelines de IA.",
     exp0_tag:"🏆 Ascenso",
     exp1_desc:"Validación y control de calidad de datasets de inspecciones bajo estándares NASSCO, asegurando la integridad de datos para modelos de IA.",
