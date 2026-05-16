@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Valentina Morana — AI &amp; Data Analyst. Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles."/>
   <title>Valentina Morana</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
@@ -274,7 +275,7 @@
     .timeline-group::before {
       content: '';
       position: absolute;
-      left: -1.155rem; /* center del dot: -1.6rem + 4.5px */
+      left: -1.155rem;
       top: calc(2.45rem + 9px);
       bottom: calc(2.45rem + 9px);
       width: 2px;
@@ -351,19 +352,6 @@
     .award-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
     .award-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
 
-    /* ─── PERSONAL / SOFT SKILLS ─── */
-    .personal-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
-    .personal-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 1.25rem 1.4rem;
-      backdrop-filter: blur(8px); text-align: center;
-      transition: border-color 0.2s;
-    }
-    .personal-card:hover { border-color: rgba(244,114,182,0.3); }
-    .personal-card .p-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
-    .personal-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .personal-card p { font-size: 0.78rem; color: var(--muted); }
-
     /* ─── LANGUAGES ─── */
     .lang-cards { display: flex; gap: 1rem; flex-wrap: wrap; }
     .lang-card {
@@ -373,7 +361,13 @@
       backdrop-filter: blur(8px); transition: border-color 0.2s;
     }
     .lang-card:hover { border-color: rgba(244,114,182,0.3); }
-    .lang-flag { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .lang-initial {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--grad-soft); border: 1px solid rgba(244,114,182,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em;
+      color: var(--pink-soft); margin-bottom: 1rem;
+    }
     .lang-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
     .lang-level {
       display: inline-block;
@@ -428,9 +422,9 @@
       .hero { grid-template-columns: 1fr; gap: 2.5rem; }
       .hero-photo-wrap { width: 220px; height: 265px; margin: 0 auto; }
       .about-grid { grid-template-columns: 1fr 1fr; }
+      .about-card.highlight { grid-column: 1 / -1; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card.featured { grid-column: 1; }
-      .personal-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
       nav { padding: 0 1.25rem; }
       .nav-links { display: none; }
@@ -487,7 +481,7 @@
 
   <div class="hero-photo-wrap">
     <div class="hero-photo">
-      <img src="https://media.licdn.com/dms/image/v2/D4D03AQEAYFyTmaJyIA/profile-displayphoto-crop_800_800/B4DZ0iD1n1JoAI-/0/1774392925296?e=1780531200&v=beta&t=dy_NMsHr2pKm0j1SNy6XY1STGjf6joU-BJTLZMbYO0g" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Guardá tu foto como<br><strong>photo.jpg</strong><br>en la misma carpeta</span></div>'"/>
+      <img src="photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Guardá tu foto como<br><strong>photo.jpg</strong><br>en la misma carpeta</span></div>'"/>
     </div>
   </div>
 </div>
@@ -498,7 +492,7 @@
 <div class="section-wrap">
 <section id="about">
   <p class="section-label" data-i18n="about_label">About me</p>
-  <h2 class="section-title" data-i18n="about_title">Not just a student.</h2>
+  <h2 class="section-title" data-i18n="about_title">Engineer in progress. Analyst in action.</h2>
   <p class="section-desc" data-i18n="about_desc">Already working in the AI industry while finishing my degree — combining technical skills with real business experience.</p>
   <div class="about-grid">
     <div class="about-card highlight">
@@ -514,7 +508,7 @@
     <div class="about-card">
       <span class="icon">📊</span>
       <h3 data-i18n="about_c4_title">Business + Tech Mindset</h3>
-      <p data-i18n="about_c4_desc">Experience bridging data pipelines and business operations — from logistics reporting to client-facing team leadership.</p>
+      <p data-i18n="about_c4_desc">Experience bridging data pipelines and business operations — from logistics reporting to cross-functional team coordination.</p>
     </div>
     <div class="about-card">
       <span class="icon">🤖</span>
@@ -529,7 +523,7 @@
     <div class="about-card">
       <span class="icon">🤝</span>
       <h3 data-i18n="pers_c3_title">People Person</h3>
-      <p data-i18n="pers_c3_desc">Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a codebase.</p>
+      <p data-i18n="pers_c3_desc">Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a dataset.</p>
     </div>
   </div>
 </section>
@@ -544,11 +538,13 @@
   <h2 class="section-title" data-i18n="lang_title">I speak your language.</h2>
   <div class="lang-cards">
     <div class="lang-card">
+      <div class="lang-initial">ES</div>
       <div class="lang-name" data-i18n="lang1_name">Spanish</div>
       <span class="lang-level" data-i18n="lang1_level">Native</span>
       <p class="lang-desc" data-i18n="lang1_desc">Native speaker. Fluent in professional, technical, and everyday contexts.</p>
     </div>
     <div class="lang-card">
+      <div class="lang-initial">EN</div>
       <div class="lang-name" data-i18n="lang2_name">English</div>
       <span class="lang-level">C2 Proficient</span>
       <p class="lang-desc" data-i18n="lang2_desc">Cambridge C1 Grade A · EF SET 81/100. Fully comfortable in English-only environments, meetings and written communication.</p>
@@ -594,8 +590,8 @@
       <span class="timeline-date">Jun 2024 — Aug 2025</span>
       <div class="timeline-content">
         <span class="timeline-company">PLS Logistic Services</span>
-        <span class="timeline-role" data-i18n="exp2_role">Data Operations &amp; Coordinator</span>
-        <p class="timeline-desc" data-i18n="exp2_desc">Real-time data monitoring and operational reporting, then promoted to coordinate cross-functional teams with data-driven decision making.</p>
+        <span class="timeline-role" data-i18n="exp2_role">Data Analyst → Coordinator</span>
+        <p class="timeline-desc" data-i18n="exp2_desc">Started in real-time data monitoring and operational reporting; promoted to Coordinator within the year, leading cross-functional teams through data-driven decision-making.</p>
         <span class="timeline-tag" data-i18n="exp2_tag">Data Ops · Reporting</span>
       </div>
     </div>
@@ -605,7 +601,7 @@
       <div class="timeline-content">
         <span class="timeline-company">Bis Contact Center</span>
         <span class="timeline-role" data-i18n="exp4_role">Bilingual Analyst — US Health Insurance</span>
-        <p class="timeline-desc" data-i18n="exp4_desc">Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-accuracy, process-driven environment.</p>
+        <p class="timeline-desc" data-i18n="exp4_desc">Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-stakes, detail-oriented environment.</p>
         <span class="timeline-tag">English C2 · Data Analysis</span>
       </div>
     </div>
@@ -643,7 +639,7 @@
     <div class="project-card">
       <div class="project-header">
         <span class="project-icon">🔍</span>
-        <span class="project-date">2025</span>
+        <span class="project-date">Aug – Sep 2025</span>
       </div>
       <div class="project-title" data-i18n="proj2_title">Data Lake — Crime Statistics in Argentina</div>
       <p class="project-desc" data-i18n="proj2_desc">Data engineering project building a lake from public crime statistics in Argentina — structured, modeled and analyzed for insights.</p>
@@ -660,11 +656,12 @@
         <span class="project-icon">📊</span>
         <span class="project-date">Jul 2025</span>
       </div>
-      <div class="project-title" data-i18n="proj3_title">Probability &amp; Statistics — UAI Award</div>
-      <p class="project-desc" data-i18n="proj3_desc">Final project recognized with the "Premio a las Buenas Prácticas" by UAI. Presented in the university's academic podcast.</p>
+      <div class="project-title" data-i18n="proj3_title">Statistical Inference &amp; Applied Probability — UAI Award</div>
+      <p class="project-desc" data-i18n="proj3_desc">End-of-term project applying statistical inference, sampling theory and probability distributions to real-world data. Recognized with the "Premio a las Buenas Prácticas" by UAI and presented in the university's academic podcast.</p>
       <div class="project-tags">
         <span class="project-tag">Statistics</span>
-        <span class="project-tag">🏆 Award</span>
+        <span class="project-tag">Probability</span>
+        <span class="project-tag">🏆 UAI Award</span>
         <span class="project-tag">UAI Podcast</span>
       </div>
     </div>
@@ -706,6 +703,16 @@
       <h4>n8n / AI Agents</h4>
       <p data-i18n="skill5_desc">Automated AI agent workflows and integrations.</p>
     </div>
+    <div class="skill-card">
+      <span class="skill-icon">📈</span>
+      <h4>Power BI</h4>
+      <p data-i18n="skill6_desc">Interactive dashboards and data visualization for business reporting.</p>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🐙</span>
+      <h4>Git / GitHub</h4>
+      <p data-i18n="skill7_desc">Version control, branching and collaborative development workflows.</p>
+    </div>
   </div>
 </section>
 </div>
@@ -725,8 +732,7 @@
     <div class="cert-card"><div class="cert-logo">📡</div><div><span class="cert-name">HCIA-5G V2.0</span><span class="cert-issuer">Huawei ICT Academy</span></div></div>
     <div class="cert-card"><div class="cert-logo">🌐</div><div><span class="cert-name">HCIA-Datacom V1.0</span><span class="cert-issuer">Huawei ICT Academy</span></div></div>
     <div class="cert-card"><div class="cert-logo">🌐</div><div><span class="cert-name">Computer Network</span><span class="cert-issuer">Huawei ICT Academy</span></div></div>
-    <div class="cert-card"><div class="cert-logo">📊</div><div><span class="cert-name">Foundations: Data, Data, Everywhere</span><span class="cert-issuer">Coursera / Google</span></div></div>
-    <div class="cert-card"><div class="cert-logo">📊</div><div><span class="cert-name">Ask Questions to Make Data-Driven Decisions</span><span class="cert-issuer">Coursera / Google</span></div></div>
+    <div class="cert-card"><div class="cert-logo">📊</div><div><span class="cert-name" data-i18n="cert_google_name">Google Data Analytics Certificate</span><span class="cert-issuer" data-i18n="cert_google_issuer">Coursera / Google · Modules 1–2</span></div></div>
     <div class="cert-card"><div class="cert-logo">📜</div><div><span class="cert-name">First Certificate in English — C1 Grade A</span><span class="cert-issuer">Cambridge Assessment</span></div></div>
     <div class="cert-card"><div class="cert-logo">📜</div><div><span class="cert-name">EF SET Certificate — 81/100 (C2)</span><span class="cert-issuer">EF Education First</span></div></div>
   </div>
@@ -740,11 +746,11 @@
 <section id="contact">
   <div class="contact-box">
     <h2 data-i18n="contact_title">Let's work together.</h2>
-    <p data-i18n="contact_desc">Open to roles in data, AI and software development — internships, junior positions or freelance projects.</p>
+    <p data-i18n="contact_desc">Open to roles in data, AI and software development — internships, junior positions and freelance projects.</p>
     <div class="contact-links">
       <a href="mailto:valentinamorana@gmail.com" class="contact-link">valentinamorana@gmail.com</a>
-      <a href="https://www.linkedin.com/in/valentinamorana/" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://github.com/valentinamorana" target="_blank" class="contact-link">GitHub</a>
+      <a href="https://www.linkedin.com/in/valentinamorana/" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+      <a href="https://github.com/valentinamorana" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
     </div>
   </div>
 </section>
@@ -762,29 +768,31 @@ const t = {
     hero_title:"AI &amp; Data Analyst.",
     hero_sub:`Systems Engineering student (4th year) already working in the AI industry — <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
-    badge_label:"Currently at",
     present:"Present",
-    about_label:"About me", about_title:"Not just a student.",
+    about_label:"About me", about_title:"Engineer in progress. Analyst in action.",
     about_desc:"Already working in the AI industry while finishing my degree — combining technical skills with real business experience.",
     about_c1_title:"AI &amp; Data Quality",
     about_c1_desc:"Validating datasets for AI model training at ITPipes under NASSCO standards. I make sure AI learns from clean, reliable data.",
     about_c2_title:"Systems Engineering — 4th Year",
     about_c2_desc:"Studying at Universidad Abierta Interamericana with hands-on experience in SQL Server, .NET, Python and C++.",
-    about_c3_title:"Bilingual — English C2",
-    about_c3_desc:"Cambridge First Certificate (C1 Grade A) + EF SET 81/100 (C2). Comfortable in fully English-speaking environments.",
     about_c4_title:"Business + Tech Mindset",
-    about_c4_desc:"Experience bridging data pipelines and business operations — from logistics reporting to client-facing team leadership.",
+    about_c4_desc:"Experience bridging data pipelines and business operations — from logistics reporting to cross-functional team coordination.",
+    pers_c1_title:"Robotics Enthusiast",
+    pers_c1_desc:"I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.",
+    pers_c2_title:"Former English Teacher",
+    pers_c2_desc:"I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.",
+    pers_c3_title:"People Person",
+    pers_c3_desc:"Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a dataset.",
     exp_label:"Experience", exp_title:"Where I've worked.",
-    group_itpipes:"ITPipes — Growth path",
     exp0_desc:"Promoted to Senior BQA — leading quality control processes and raising data standards for AI pipelines across the team.",
     exp0_tag:"🏆 Promoted",
     exp1_desc:"Validated and quality-controlled pipeline inspection datasets under NASSCO standards, ensuring data integrity prior to AI model ingestion.",
     exp1_tag:"AI &amp; Data Quality",
-    exp2_role:"Data Operations &amp; Coordinator",
-    exp2_desc:"Real-time data monitoring and operational reporting, then promoted to coordinate cross-functional teams with data-driven decision making.",
+    exp2_role:"Data Analyst → Coordinator",
+    exp2_desc:"Started in real-time data monitoring and operational reporting; promoted to Coordinator within the year, leading cross-functional teams through data-driven decision-making.",
     exp2_tag:"Data Ops · Reporting",
     exp4_role:"Bilingual Analyst — US Health Insurance",
-    exp4_desc:"Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-accuracy, process-driven environment.",
+    exp4_desc:"Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-stakes, detail-oriented environment.",
     skills_label:"Technical Skills", skills_title:"My toolkit.",
     skills_desc:"From data analysis to desktop apps — the tools I use to build and ship things.",
     skill1_desc:"Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.",
@@ -792,32 +800,27 @@ const t = {
     skill3_desc:"Desktop apps with Windows Forms and OOP principles.",
     skill4_desc:"Performance programming, data structures, memory management.",
     skill5_desc:"Automated AI agent workflows and integrations.",
-    skill6_desc:"AWS Academy certified. Cloud computing foundations.",
+    skill6_desc:"Interactive dashboards and data visualization for business reporting.",
+    skill7_desc:"Version control, branching and collaborative development workflows.",
     proj_label:"Projects", proj_title:"Things I've built.",
     proj_desc:"Academic and personal projects — where theory meets real implementation.",
     proj1_title:"Interactive Light Show — IoT System with Sound Sensor",
     proj1_desc:"Final project for the Robotics subject at UAI. Developed an IoT smart lighting system that reacts in real time to sound input — integrating hardware sensors with a mobile app built in Android Studio.",
     proj2_title:"Data Lake — Crime Statistics in Argentina",
     proj2_desc:"Data engineering project building a lake from public crime statistics in Argentina — structured, modeled and analyzed for insights.",
-    proj3_title:"Probability &amp; Statistics — UAI Award",
-    proj3_desc:"Final project recognized with the \"Premio a las Buenas Prácticas\" by UAI. Presented in the university's academic podcast.",
-    pers_label:"Beyond the work", pers_title:"A bit about me.",
-    pers_desc:"Technical skills get you in the door — but these are the things that make me different to work with.",
-    pers_c1_title:"Robotics Enthusiast",
-    pers_c1_desc:"I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.",
-    pers_c2_title:"Former English Teacher",
-    pers_c2_desc:"I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.",
-    pers_c3_title:"People Person",
-    pers_c3_desc:"Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a codebase.",
+    proj3_title:"Statistical Inference &amp; Applied Probability — UAI Award",
+    proj3_desc:"End-of-term project applying statistical inference, sampling theory and probability distributions to real-world data. Recognized with the \"Premio a las Buenas Prácticas\" by UAI and presented in the university's academic podcast.",
     certs_label:"Certifications", certs_title:"Always learning.",
     certs_desc:"Continuous upskilling in AI, cloud, networking, security and English.",
+    cert_google_name:"Google Data Analytics Certificate",
+    cert_google_issuer:"Coursera / Google · Modules 1–2",
     lang_label:"Languages", lang_title:"I speak your language.",
     lang1_name:"Spanish", lang1_level:"Native",
     lang1_desc:"Native speaker. Fluent in professional, technical, and everyday contexts.",
     lang2_name:"English",
     lang2_desc:"Cambridge C1 Grade A · EF SET 81/100. Fully comfortable in English-only environments, meetings and written communication.",
     contact_title:"Let's work together.",
-    contact_desc:"Open to roles in data, AI and software development and freelance projects.",
+    contact_desc:"Open to roles in data, AI and software development — internships, junior positions and freelance projects.",
     footer:"Valentina Morana · 2026"
   },
   es: {
@@ -826,29 +829,31 @@ const t = {
     hero_title:"Analista de IA &amp; Datos.",
     hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA — <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
-    badge_label:"Actualmente en",
     present:"Actualidad",
-    about_label:"Sobre mí", about_title:"No soy solo una estudiante.",
+    about_label:"Sobre mí", about_title:"Ingeniera en progreso. Analista en acción.",
     about_desc:"Ya trabajo en la industria de IA mientras termino mi carrera — combinando habilidades técnicas con experiencia real de negocio.",
     about_c1_title:"IA &amp; Calidad de Datos",
     about_c1_desc:"Valido datasets para el entrenamiento de modelos de IA en ITPipes bajo estándares NASSCO. Me aseguro de que la IA aprenda con datos limpios y confiables.",
     about_c2_title:"Ingeniería en Sistemas — 4º Año",
     about_c2_desc:"Estudiante en la UAI con experiencia práctica en SQL Server, .NET, Python y C++.",
-    about_c3_title:"Bilingüe — Inglés C2",
-    about_c3_desc:"Cambridge First Certificate (C1 Grade A) + EF SET 81/100 (C2). Cómoda en entornos de trabajo 100% en inglés.",
     about_c4_title:"Mentalidad Técnica + Negocio",
-    about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio — desde reporting logístico hasta liderazgo de equipos.",
+    about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio — desde reporting logístico hasta coordinación de equipos multidisciplinarios.",
+    pers_c1_title:"Fanática de la Robótica",
+    pers_c1_desc:"Me encanta construir cosas — desde proyectos IoT hasta sistemas impulsados por IA. La robótica es donde vive mi curiosidad.",
+    pers_c2_title:"Ex Profesora de Inglés",
+    pers_c2_desc:"Enseñé inglés antes de volcarme a la tecnología. Esa experiencia me da habilidades de comunicación sólidas — explico ideas complejas con claridad, en dos idiomas.",
+    pers_c3_title:"Don de Gentes",
+    pers_c3_desc:"Años de trabajo cara a clientes, liderazgo de equipos y enseñanza me hacen igual de cómoda en una reunión que frente a un dataset.",
     exp_label:"Experiencia", exp_title:"Dónde trabajé.",
-    group_itpipes:"ITPipes — Trayectoria de crecimiento",
     exp0_desc:"Ascendida a Senior BQA — liderando procesos de control de calidad y elevando los estándares de datos para pipelines de IA.",
     exp0_tag:"🏆 Ascenso",
     exp1_desc:"Validación y control de calidad de datasets de inspecciones bajo estándares NASSCO, asegurando la integridad de datos para modelos de IA.",
     exp1_tag:"IA &amp; Calidad de Datos",
-    exp2_role:"Data Operations &amp; Coordinación",
-    exp2_desc:"Monitoreo de datos en tiempo real y reporting operativo, luego ascendida a coordinar equipos con toma de decisiones basada en datos.",
+    exp2_role:"Analista de Datos → Coordinadora",
+    exp2_desc:"Comencé en monitoreo de datos en tiempo real y reporting operativo; ascendida a Coordinadora durante el mismo año, liderando equipos con toma de decisiones basada en datos.",
     exp2_tag:"Data Ops · Reportes",
     exp4_role:"Analista Bilingüe — Seguros Médicos EE.UU.",
-    exp4_desc:"Análisis de registros de pacientes para decisiones basadas en datos en seguros médicos de EE.UU. Trabajo 100% en inglés en un entorno de alta precisión.",
+    exp4_desc:"Análisis de registros de pacientes para decisiones basadas en datos en seguros médicos de EE.UU. Trabajo 100% en inglés en un entorno de alta precisión y exigencia.",
     skills_label:"Habilidades Técnicas", skills_title:"Mi stack.",
     skills_desc:"Desde análisis de datos hasta apps de escritorio — las herramientas con las que construyo cosas.",
     skill1_desc:"Pandas y NumPy para análisis de datos. Flujos de Data Science y Analytics.",
@@ -856,31 +861,27 @@ const t = {
     skill3_desc:"Apps de escritorio con Windows Forms y principios de POO.",
     skill4_desc:"Programación de rendimiento, estructuras de datos, manejo de memoria.",
     skill5_desc:"Flujos automatizados con agentes de IA e integraciones.",
+    skill6_desc:"Dashboards interactivos y visualización de datos para reporting de negocio.",
+    skill7_desc:"Control de versiones, branching y flujos de desarrollo colaborativo.",
     proj_label:"Proyectos", proj_title:"Cosas que construí.",
     proj_desc:"Proyectos académicos y personales — donde la teoría se convierte en algo real.",
     proj1_title:"Light Show Interactivo — Sistema IoT con Sensor de Sonido",
     proj1_desc:"Proyecto final de la materia Robótica en la UAI. Desarrollé un sistema de iluminación inteligente que reacciona en tiempo real al sonido, integrando sensores de hardware con una app móvil en Android Studio.",
     proj2_title:"Data Lake — Estadísticas Criminales en la República Argentina",
     proj2_desc:"Proyecto de ingeniería de datos construyendo un data lake a partir de estadísticas criminales públicas de Argentina — estructuradas, modeladas y analizadas.",
-    proj3_title:"Probabilidad y Estadística — Premio UAI",
-    proj3_desc:"Trabajo final premiado con el \"Premio a las Buenas Prácticas\" de la UAI. Presentado en el podcast académico de la universidad.",
-    pers_label:"Más allá del trabajo", pers_title:"Un poco sobre mí.",
-    pers_desc:"Las habilidades técnicas abren la puerta — pero esto es lo que me hace distinta para trabajar.",
-    pers_c1_title:"Fanática de la Robótica",
-    pers_c1_desc:"Me encanta construir cosas — desde proyectos IoT hasta sistemas impulsados por IA. La robótica es donde vive mi curiosidad.",
-    pers_c2_title:"Ex Profesora de Inglés",
-    pers_c2_desc:"Enseñé inglés antes de volcarme a la tecnología. Esa experiencia me da habilidades de comunicación sólidas — explico ideas complejas con claridad, en dos idiomas.",
-    pers_c3_title:"Habilidades Sociales",
-    pers_c3_desc:"Años de trabajo cara a clientes, liderazgo de equipos y enseñanza me hacen igual de cómoda en una reunión que frente a un codebase.",
+    proj3_title:"Inferencia Estadística y Probabilidad Aplicada — Premio UAI",
+    proj3_desc:"Trabajo final de la materia que aplica inferencia estadística, teoría de muestreo y distribuciones de probabilidad a datos reales. Premiado con el \"Premio a las Buenas Prácticas\" de la UAI y presentado en el podcast académico universitario.",
     certs_label:"Certificaciones", certs_title:"Siempre aprendiendo.",
     certs_desc:"Formación continua en IA, cloud, redes, seguridad e inglés profesional.",
+    cert_google_name:"Certificado de Análisis de Datos de Google",
+    cert_google_issuer:"Coursera / Google · Módulos 1–2",
     lang_label:"Idiomas", lang_title:"Hablo tu idioma.",
     lang1_name:"Español", lang1_level:"Nativo",
     lang1_desc:"Hablante nativa. Fluida en contextos profesionales, técnicos y cotidianos.",
     lang2_name:"Inglés",
     lang2_desc:"Cambridge C1 Grade A · EF SET 81/100. Completamente cómoda en entornos en inglés, reuniones y comunicación escrita.",
     contact_title:"Trabajemos juntos.",
-    contact_desc:"Abierta a roles en datos, IA y desarrollo de software y proyectos freelance.",
+    contact_desc:"Abierta a roles en datos, IA y desarrollo de software — pasantías, posiciones junior y proyectos freelance.",
     footer:"Valentina Morana · 2026"
   }
 };
