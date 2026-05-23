@@ -80,6 +80,7 @@
       text-decoration: none; color: var(--muted);
       font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
       transition: color 0.2s;
+      padding: 1.2rem 0.4rem;
     }
     .nav-links a:hover { color: var(--pink); }
 
@@ -141,6 +142,8 @@
       padding: 0.8rem 1.75rem; border-radius: 100px;
       font-size: 0.9rem; font-weight: 700; cursor: pointer; text-decoration: none;
       box-shadow: 0 4px 20px rgba(244,114,182,0.35);
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(244,114,182,0.5); }
@@ -149,7 +152,8 @@
       border: 1px solid var(--border); padding: 0.8rem 1.75rem;
       border-radius: 100px; font-size: 0.9rem; font-weight: 600;
       cursor: pointer; text-decoration: none;
-      display: inline-flex; align-items: center; justify-content: center; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1; white-space: nowrap;
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
@@ -530,6 +534,37 @@
 
     /* ─── PHOTO PARALLAX SMOOTH ─── */
     .hero-photo-wrap { transition: transform 0.18s ease-out; }
+
+    /* ─── BLOB SCROLL DRIFT ─── */
+    .blob-1 { transition: top 1.8s ease; }
+    .blob-2 { transition: bottom 1.8s ease; }
+
+    /* ─── SCROLL SPY ─── */
+    .nav-links a.spy-active { color: var(--pink); }
+
+    /* ─── HEART RAIN ─── */
+    @keyframes heartFall {
+      0%   { transform: translateY(0) rotate(-10deg) scale(0); opacity: 1; }
+      10%  { transform: translateY(-20px) scale(1); }
+      100% { transform: translateY(108vh) rotate(20deg) scale(0.6); opacity: 0; }
+    }
+    .heart-rain {
+      position: fixed; pointer-events: none; z-index: 9999;
+      animation: heartFall linear forwards;
+    }
+    /* cursor on photo */
+    .hero-photo { cursor: pointer; }
+
+    /* ─── CV BUTTON ─── */
+    .cv-btn {
+      border: 1px solid var(--border); background: transparent;
+      color: var(--muted); padding: 0.28rem 0.65rem; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cv-btn:hover { border-color: var(--pink); color: var(--pink); }
+
   </style>
 </head>
 <body>
@@ -554,6 +589,7 @@
       <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <button class="cv-btn" onclick="downloadCV()" title="Download CV">CV ↓</button>
     <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
@@ -585,7 +621,7 @@
   </div>
 
   <div class="hero-photo-wrap">
-    <div class="hero-photo">
+    <div class="hero-photo" id="photo-click">
       <img src="photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Add your photo as<br><strong>photo.jpg</strong></span></div>'"/>
     </div>
   </div>
@@ -1032,6 +1068,17 @@ function setLang(lang) {
 }
 setLang('en');
 
+/* ── CV DOWNLOAD ── */
+function downloadCV() {
+  const lang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'es';
+  const a = document.createElement('a');
+  a.href = lang === 'en' ? 'cv/Resume Valentina Morana.pdf' : 'cv/cv-es.pdf';
+  a.download = lang === 'en' ? 'Valentina_Morana_CV_EN.pdf' : 'Valentina_Morana_CV_ES.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 /* ── THEME TOGGLE ── */
 function toggleTheme() {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
@@ -1104,6 +1151,52 @@ const barObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
+
+/* ── SCROLL SPY ── */
+const spySections = document.querySelectorAll('section[id]');
+const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
+const spyObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      spyLinks.forEach(a => {
+        a.classList.toggle('spy-active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-10% 0px -60% 0px' });
+spySections.forEach(s => spyObs.observe(s));
+
+/* ── BLOB SCROLL DRIFT ── */
+const blob1 = document.querySelector('.blob-1');
+const blob2 = document.querySelector('.blob-2');
+function driftBlobs() {
+  const p = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+  if (blob1) blob1.style.top  = (-200 + p * 700) + 'px';
+  if (blob2) blob2.style.bottom = (-150 + (1 - p) * 350) + 'px';
+}
+window.addEventListener('scroll', driftBlobs, { passive: true });
+
+/* ── PHOTO CLICK → HEART RAIN ── */
+const photoClick = document.getElementById('photo-click');
+if (photoClick) {
+  photoClick.addEventListener('click', () => {
+    const hearts = ['❤️','💜','💗','💕','💓','💖'];
+    for (let i = 0; i < 28; i++) {
+      setTimeout(() => {
+        const h = document.createElement('span');
+        h.className = 'heart-rain';
+        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        const size = Math.random() * 20 + 14;
+        const left = Math.random() * 92 + 4;
+        const dur  = Math.random() * 1.2 + 2.2;
+        h.style.cssText += `font-size:${size}px;left:${left}vw;top:-40px;animation-duration:${dur}s;`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), dur * 1000 + 200);
+      }, i * 55);
+    }
+  });
+}
 
 /* ── HERO PHOTO PARALLAX ── */
 const heroEl    = document.querySelector('.hero');
