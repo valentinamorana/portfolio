@@ -13,6 +13,7 @@
   <meta name="twitter:description" content="Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles."/>
   <meta name="twitter:image" content="photo.jpg"/>
   <title>Valentina Morana</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f472b6'/%3E%3Ctext x='50%25' y='52%25' font-family='Inter,Arial,sans-serif' font-size='13' font-weight='900' text-anchor='middle' dominant-baseline='central' fill='white'%3EVM%3C/text%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1185,17 +1186,16 @@ document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
 /* ── SCROLL SPY ── */
 const spySections = document.querySelectorAll('section[id]');
 const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
-const spyObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const id = entry.target.id;
-      spyLinks.forEach(a => {
-        a.classList.toggle('spy-active', a.getAttribute('href') === '#' + id);
-      });
-    }
+function updateSpy() {
+  const trigger = window.scrollY + window.innerHeight * 0.35;
+  let active = null;
+  spySections.forEach(s => {
+    if (s.getBoundingClientRect().top + window.scrollY <= trigger) active = s.id;
   });
-}, { threshold: 0.25, rootMargin: '-10% 0px -60% 0px' });
-spySections.forEach(s => spyObs.observe(s));
+  spyLinks.forEach(a => a.classList.toggle('spy-active', a.getAttribute('href') === '#' + active));
+}
+window.addEventListener('scroll', updateSpy, { passive: true });
+updateSpy();
 
 /* ── BLOB SCROLL DRIFT ── */
 const blob1 = document.querySelector('.blob-1');
