@@ -141,6 +141,8 @@
       padding: 0.8rem 1.75rem; border-radius: 100px;
       font-size: 0.9rem; font-weight: 700; cursor: pointer; text-decoration: none;
       box-shadow: 0 4px 20px rgba(244,114,182,0.35);
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(244,114,182,0.5); }
@@ -149,7 +151,8 @@
       border: 1px solid var(--border); padding: 0.8rem 1.75rem;
       border-radius: 100px; font-size: 0.9rem; font-weight: 600;
       cursor: pointer; text-decoration: none;
-      display: inline-flex; align-items: center; justify-content: center; text-align: center;
+      display: inline-flex; align-items: center; justify-content: center;
+      line-height: 1; white-space: nowrap;
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-secondary:hover { border-color: var(--pink); color: var(--pink); }
@@ -530,6 +533,147 @@
 
     /* ─── PHOTO PARALLAX SMOOTH ─── */
     .hero-photo-wrap { transition: transform 0.18s ease-out; }
+
+    /* ─── BLOB SCROLL DRIFT ─── */
+    .blob-1 { transition: top 1.8s ease; }
+    .blob-2 { transition: bottom 1.8s ease; }
+
+    /* ─── SCROLL SPY ─── */
+    .nav-links a.spy-active { color: var(--pink); }
+
+    /* ─── HEART RAIN ─── */
+    @keyframes heartFall {
+      0%   { transform: translateY(0) rotate(-10deg) scale(0); opacity: 1; }
+      10%  { transform: translateY(-20px) scale(1); }
+      100% { transform: translateY(108vh) rotate(20deg) scale(0.6); opacity: 0; }
+    }
+    .heart-rain {
+      position: fixed; pointer-events: none; z-index: 9999;
+      animation: heartFall linear forwards;
+    }
+    /* cursor on photo */
+    .hero-photo { cursor: pointer; }
+
+    /* ─── CV BUTTON ─── */
+    .cv-btn {
+      border: 1px solid var(--border); background: transparent;
+      color: var(--muted); padding: 0.28rem 0.65rem; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .cv-btn:hover { border-color: var(--pink); color: var(--pink); }
+
+    /* ─── PRINT / CV MODE ─── */
+    @media print {
+      @page { margin: 1.6cm 1.4cm; size: A4; }
+
+      /* hide everything decorative/interactive */
+      nav, .blob, .cursor-dot, .cursor-ring, .heart-rain,
+      .theme-btn, .cv-btn, .lang-toggle, .hero-badge, .hero-cta,
+      footer, hr.divider, .section-wrap > hr,
+      #languages { display: none !important; }
+
+      * { animation: none !important; transition: none !important; box-shadow: none !important; backdrop-filter: none !important; }
+
+      body { background: #fff !important; color: #1e1033 !important; font-size: 9.5pt; line-height: 1.55; }
+
+      /* fix gradient text — becomes solid purple */
+      .hero h1 .title, .section-label, .timeline-company,
+      .about-card.highlight h3, .contact-box h2, .nav-logo {
+        background: none !important;
+        -webkit-text-fill-color: #7c3aed !important;
+        color: #7c3aed !important;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        max-width: 100%; display: grid;
+        grid-template-columns: 1fr 110pt;
+        gap: 1.5rem; padding: 0 0 18pt; align-items: center;
+        border-bottom: 2pt solid #ede9fe;
+      }
+      .hero h1 { font-size: 22pt; line-height: 1.1; margin-bottom: 4pt; }
+      .hero h1 .title { font-size: 14pt; display: block; }
+      .hero-sub { font-size: 9pt; color: #64748b !important; max-width: 100%; }
+      .hero-photo-wrap { width: 100pt; height: 120pt; }
+      .hero-photo-wrap::before { display: none; }
+      .hero-photo { border: 2pt solid #ede9fe; border-radius: 12pt; }
+
+      /* ── SECTIONS ── */
+      section { max-width: 100%; padding: 14pt 0; }
+      .section-label { font-size: 6.5pt; letter-spacing: 0.15em; margin-bottom: 2pt; }
+      .section-title { font-size: 13pt; margin-bottom: 5pt; }
+      .section-desc { font-size: 8.5pt; color: #64748b !important; margin-bottom: 10pt; }
+
+      /* ── ABOUT CARDS ── */
+      .about-grid { grid-template-columns: 1fr 1fr 1fr; gap: 6pt; }
+      .about-card {
+        background: #faf5ff !important; border: 1pt solid #ede9fe !important;
+        border-radius: 8pt; padding: 9pt;
+      }
+      .about-card.highlight { background: #f3e8ff !important; }
+      .about-card .icon { font-size: 1rem; margin-bottom: 4pt; }
+      .about-card h3 { font-size: 8.5pt; margin-bottom: 2pt; }
+      .about-card p { font-size: 7.5pt; color: #64748b !important; }
+
+      /* ── TIMELINE ── */
+      .timeline { padding-left: 1rem; }
+      .timeline-item { grid-template-columns: 90pt 1fr; gap: 12pt; padding: 9pt 0; break-inside: avoid; }
+      .timeline-group { break-inside: avoid; }
+      .timeline-date { font-size: 7.5pt; color: #64748b !important; }
+      .timeline-role { font-size: 9.5pt; }
+      .timeline-desc { font-size: 8pt; color: #64748b !important; }
+      .timeline-tag { font-size: 6.5pt; padding: 1pt 5pt; }
+
+      /* ── SKILLS ── */
+      .skills-grid { grid-template-columns: repeat(4, 1fr); gap: 6pt; }
+      .skill-card {
+        background: #faf5ff !important; border: 1pt solid #ede9fe !important;
+        border-radius: 8pt; padding: 8pt;
+      }
+      .skill-card .skill-icon { font-size: 1rem; margin-bottom: 3pt; }
+      .skill-card h4 { font-size: 8.5pt; margin-bottom: 1pt; }
+      .skill-card p { font-size: 7pt; color: #64748b !important; }
+
+      /* ── CERTS ── */
+      .certs-grid { grid-template-columns: 1fr 1fr; gap: 5pt; }
+      .cert-card {
+        background: white !important; border: 1pt solid #ede9fe !important;
+        border-radius: 6pt; padding: 6pt 8pt;
+      }
+      .cert-name { font-size: 8pt; }
+      .cert-issuer { font-size: 7pt; color: #64748b !important; }
+
+      /* ── PROJECTS ── */
+      .projects-grid { grid-template-columns: 1fr 1fr; gap: 8pt; }
+      .project-card {
+        background: #faf5ff !important; border: 1pt solid #ede9fe !important;
+        border-radius: 8pt; padding: 10pt;
+      }
+      .project-card.featured { grid-column: 1 / -1; }
+      .project-title { font-size: 9pt; }
+      .project-desc { font-size: 8pt; color: #64748b !important; }
+      .project-tag { font-size: 6.5pt; }
+
+      /* ── CONTACT ── */
+      #contact .contact-box {
+        background: #faf5ff !important; border: 1pt solid #ede9fe !important;
+        border-radius: 10pt; padding: 16pt; text-align: left;
+      }
+      #contact .contact-box::before, #contact .contact-box::after { display: none; }
+      .contact-links { justify-content: flex-start; }
+      .contact-link {
+        background: white !important; border: 1pt solid #ede9fe !important;
+        color: #7c3aed !important; font-size: 8pt; padding: 5pt 10pt;
+      }
+
+      /* ── MISC ── */
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .award-card { background: #fffbeb !important; border: 1pt solid #fde68a !important; border-radius: 8pt; }
+      .lang-cards { gap: 8pt; }
+      .lang-card { background: #faf5ff !important; border: 1pt solid #ede9fe !important; border-radius: 8pt; padding: 10pt; }
+    }
   </style>
 </head>
 <body>
@@ -554,6 +698,7 @@
       <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <button class="cv-btn" onclick="downloadCV()" title="Download CV">CV ↓</button>
     <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
@@ -585,7 +730,7 @@
   </div>
 
   <div class="hero-photo-wrap">
-    <div class="hero-photo">
+    <div class="hero-photo" id="photo-click">
       <img src="photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Add your photo as<br><strong>photo.jpg</strong></span></div>'"/>
     </div>
   </div>
@@ -1032,6 +1177,17 @@ function setLang(lang) {
 }
 setLang('en');
 
+/* ── CV DOWNLOAD ── */
+function downloadCV() {
+  const lang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'es';
+  const a = document.createElement('a');
+  a.href = lang === 'en' ? 'cv/Resume Valentina Morana.pdf' : 'cv/cv-es.pdf';
+  a.download = lang === 'en' ? 'Valentina_Morana_CV_EN.pdf' : 'Valentina_Morana_CV_ES.pdf';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 /* ── THEME TOGGLE ── */
 function toggleTheme() {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
@@ -1104,6 +1260,52 @@ const barObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
+
+/* ── SCROLL SPY ── */
+const spySections = document.querySelectorAll('section[id]');
+const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
+const spyObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      spyLinks.forEach(a => {
+        a.classList.toggle('spy-active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-10% 0px -60% 0px' });
+spySections.forEach(s => spyObs.observe(s));
+
+/* ── BLOB SCROLL DRIFT ── */
+const blob1 = document.querySelector('.blob-1');
+const blob2 = document.querySelector('.blob-2');
+function driftBlobs() {
+  const p = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+  if (blob1) blob1.style.top  = (-200 + p * 700) + 'px';
+  if (blob2) blob2.style.bottom = (-150 + (1 - p) * 350) + 'px';
+}
+window.addEventListener('scroll', driftBlobs, { passive: true });
+
+/* ── PHOTO CLICK → HEART RAIN ── */
+const photoClick = document.getElementById('photo-click');
+if (photoClick) {
+  photoClick.addEventListener('click', () => {
+    const hearts = ['❤️','💜','💗','💕','💓','💖'];
+    for (let i = 0; i < 28; i++) {
+      setTimeout(() => {
+        const h = document.createElement('span');
+        h.className = 'heart-rain';
+        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        const size = Math.random() * 20 + 14;
+        const left = Math.random() * 92 + 4;
+        const dur  = Math.random() * 1.2 + 2.2;
+        h.style.cssText += `font-size:${size}px;left:${left}vw;top:-40px;animation-duration:${dur}s;`;
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), dur * 1000 + 200);
+      }, i * 55);
+    }
+  });
+}
 
 /* ── HERO PHOTO PARALLAX ── */
 const heroEl    = document.querySelector('.hero');
