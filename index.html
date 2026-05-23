@@ -4,6 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Valentina Morana — AI &amp; Data Analyst. Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles."/>
+  <meta property="og:title" content="Valentina Morana — AI &amp; Data Analyst"/>
+  <meta property="og:description" content="Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles. Bilingual EN–ES (C2)."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="photo.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Valentina Morana — AI &amp; Data Analyst"/>
+  <meta name="twitter:description" content="Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles."/>
+  <meta name="twitter:image" content="photo.jpg"/>
   <title>Valentina Morana</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
@@ -430,9 +438,104 @@
       .nav-links { display: none; }
       .contact-box { padding: 2.5rem 1.5rem; }
     }
+
+    /* ─── LIGHT THEME ─── */
+    [data-theme="light"] {
+      --bg:     #f5f3ff;
+      --bg2:    #ede9fe;
+      --white:  #1e1033;
+      --muted:  #6b7280;
+      --border: rgba(30,16,51,0.09);
+      --card:   rgba(30,16,51,0.04);
+      --shadow: 0 4px 24px rgba(244,114,182,0.18);
+    }
+    [data-theme="light"] nav { background: rgba(245,243,255,0.88); }
+    [data-theme="light"] .blob-1 { background: rgba(244,114,182,0.25); }
+    [data-theme="light"] .blob-2 { background: rgba(192,132,252,0.2); }
+    [data-theme="light"] .nav-links a { color: var(--muted); }
+    [data-theme="light"] .nav-logo { /* gradient already handles it */ }
+
+    /* ─── THEME TOGGLE BUTTON ─── */
+    .theme-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--border);
+      font-size: 1.05rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      transition: border-color 0.2s, transform 0.35s ease;
+    }
+    .theme-btn:hover { border-color: var(--pink); transform: rotate(20deg) scale(1.1); }
+
+    /* ─── CUSTOM CURSOR (desktop only) ─── */
+    @media (hover: hover) and (pointer: fine) {
+      * { cursor: none !important; }
+    }
+    .cursor-dot {
+      display: none; position: fixed; pointer-events: none; z-index: 9999;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--pink); transform: translate(-50%, -50%);
+    }
+    .cursor-ring {
+      display: none; position: fixed; pointer-events: none; z-index: 9998;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1.5px solid rgba(244,114,182,0.5);
+      transform: translate(-50%, -50%);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .cursor-dot, .cursor-ring { display: block; }
+    }
+    @keyframes particleFade {
+      0%   { opacity: 0.8; transform: translate(-50%,-50%) scale(1); }
+      100% { opacity: 0;   transform: translate(-50%,-50%) scale(0.1); }
+    }
+    .cursor-particle {
+      position: fixed; pointer-events: none; z-index: 9997;
+      border-radius: 50%; transform: translate(-50%,-50%);
+      animation: particleFade 0.55s ease-out forwards;
+    }
+
+    /* ─── HERO TITLE — FLOAT + GRADIENT FLOW ─── */
+    @keyframes gradientFlow {
+      0%,100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    @keyframes titleFloat {
+      0%,100% { transform: translateY(0px); }
+      50%      { transform: translateY(-8px); }
+    }
+    .hero h1 .title {
+      background-size: 200% 200% !important;
+      animation: gradientFlow 5s ease infinite, titleFloat 4s ease-in-out infinite;
+      display: inline-block;
+    }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── SKILL PROGRESS BAR ─── */
+    .skill-progress {
+      margin-top: 0.75rem; height: 3px; border-radius: 2px;
+      background: var(--border); overflow: hidden;
+    }
+    .skill-bar {
+      height: 100%; width: 0; border-radius: 2px;
+      background: var(--grad);
+      transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── PHOTO PARALLAX SMOOTH ─── */
+    .hero-photo-wrap { transition: transform 0.18s ease-out; }
   </style>
 </head>
 <body>
+
+<!-- custom cursor -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
 
 <!-- ambient blobs -->
 <div class="blob blob-1"></div>
@@ -450,6 +553,7 @@
       <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
+    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
       <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
@@ -481,7 +585,14 @@
 
   <div class="hero-photo-wrap">
     <div class="hero-photo">
-      <img src="photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Guardá tu foto como<br><strong>photo.jpg</strong><br>en la misma carpeta</span></div>'"/>
+      <img src="photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Add your photo as<br><strong>photo.jpg</strong></span></div>'"/>
+    </div>
+    <div class="hero-stack-badge">
+      <div class="badge-icon">🚀</div>
+      <div class="badge-text">
+        <span class="badge-label" data-i18n="badge_label">Currently at</span>
+        <span class="badge-value">ITPipes · Senior BQA</span>
+      </div>
     </div>
   </div>
 </div>
@@ -697,36 +808,43 @@
       <span class="skill-icon">🐍</span>
       <h4>Python</h4>
       <p data-i18n="skill1_desc">Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="80"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">🗄️</span>
       <h4>SQL Server</h4>
       <p data-i18n="skill2_desc">Relational DB design, stored procedures and C# integration.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="78"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">💻</span>
       <h4>C# / .NET</h4>
       <p data-i18n="skill3_desc">Desktop apps with Windows Forms and OOP principles.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="68"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">⚙️</span>
       <h4>C++</h4>
       <p data-i18n="skill4_desc">Performance programming, data structures, memory management.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="62"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">🔗</span>
       <h4>n8n / AI Agents</h4>
       <p data-i18n="skill5_desc">Automated AI agent workflows and integrations.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="74"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">📈</span>
       <h4>Power BI</h4>
       <p data-i18n="skill6_desc">Interactive dashboards and data visualization for business reporting.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="73"></div></div>
     </div>
     <div class="skill-card">
       <span class="skill-icon">🐙</span>
       <h4>Git / GitHub</h4>
       <p data-i18n="skill7_desc">Version control, branching and collaborative development workflows.</p>
+      <div class="skill-progress"><div class="skill-bar" data-level="82"></div></div>
     </div>
   </div>
 </section>
@@ -780,6 +898,7 @@ const t = {
   en: {
     nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
     hero_badge:"Open to opportunities",
+    badge_label:"Currently at",
     hero_title:"AI &amp; Data Analyst.",
     hero_sub:`Systems Engineering student (4th year) already working in the AI industry — <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
@@ -844,6 +963,7 @@ const t = {
   es: {
     nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
     hero_badge:"Abierta a oportunidades",
+    badge_label:"Actualmente en",
     hero_title:"Analista de IA &amp; Datos.",
     hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA — <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
@@ -917,6 +1037,94 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 }
 setLang('en');
+
+/* ── THEME TOGGLE ── */
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const next = isLight ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  document.getElementById('theme-btn').textContent = next === 'light' ? '☀️' : '🌙';
+  localStorage.setItem('theme', next);
+}
+(function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    const btn = document.getElementById('theme-btn');
+    if (btn) btn.textContent = '☀️';
+  }
+})();
+
+/* ── CUSTOM CURSOR + PARTICLE TRAIL ── */
+const cursorDot  = document.getElementById('cursor-dot');
+const cursorRing = document.getElementById('cursor-ring');
+const trailColors = ['#f472b6','#c084fc','#f9a8d4','#e879f9','#a78bfa'];
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, lastParticle = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top  = mouseY + 'px';
+  const now = Date.now();
+  if (now - lastParticle > 35) {
+    lastParticle = now;
+    const p = document.createElement('div');
+    p.className = 'cursor-particle';
+    const size = (Math.random() * 5 + 3) + 'px';
+    p.style.cssText = `left:${mouseX}px;top:${mouseY}px;width:${size};height:${size};background:${trailColors[Math.floor(Math.random()*trailColors.length)]}`;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 560);
+  }
+});
+
+(function animateRing() {
+  ringX += (mouseX - ringX) * 0.1;
+  ringY += (mouseY - ringY) * 0.1;
+  cursorRing.style.left = ringX + 'px';
+  cursorRing.style.top  = ringY + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+/* ── SCROLL REVEAL ── */
+document.querySelectorAll(
+  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card, .award-card'
+).forEach(el => el.classList.add('reveal'));
+
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ── SKILL BAR ANIMATION ── */
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.level + '%';
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
+
+/* ── HERO PHOTO PARALLAX ── */
+const heroEl    = document.querySelector('.hero');
+const photoWrap = document.querySelector('.hero-photo-wrap');
+if (heroEl && photoWrap) {
+  heroEl.addEventListener('mousemove', (e) => {
+    const r  = heroEl.getBoundingClientRect();
+    const dx = (e.clientX - (r.left + r.width  / 2)) / r.width;
+    const dy = (e.clientY - (r.top  + r.height / 2)) / r.height;
+    photoWrap.style.transform = `translate(${dx * -16}px, ${dy * -12}px)`;
+  });
+  heroEl.addEventListener('mouseleave', () => {
+    photoWrap.style.transform = 'translate(0, 0)';
+  });
+}
 </script>
 </body>
 </html>
