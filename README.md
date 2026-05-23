@@ -1,48 +1,51 @@
 # Valentina Morana — Portfolio
 
-Personal portfolio website built with vanilla HTML, CSS and JavaScript. No frameworks, no dependencies.
+Personal portfolio site built with vanilla HTML, CSS and JavaScript. No frameworks, no build step — just clean, hand-written code deployed via Vercel.
 
-## Stack
+**Live:** [valentinamorana.vercel.app](https://valentinamorana.vercel.app)
 
-- HTML5 + CSS3 (custom properties, grid, flexbox)
-- Vanilla JS (i18n EN/ES toggle)
-- Google Fonts — Inter
-- Deployed as a single `index.html` file
+---
 
 ## Features
 
-- **Bilingual** — full English/Spanish toggle
-- **Responsive** — mobile-first layout
-- **Dark theme** — custom design system with pink/lilac gradient palette
-- **Smooth scroll** — sticky nav with blur backdrop
-- **Timeline** — visual connector for same-company growth path (ITPipes)
-- **No build step** — open `index.html` in any browser
+- **Bilingual** — full EN / ES toggle, all content translated including CV download
+- **Dark / light theme** — persisted via `localStorage`
+- **Custom cursor** — heart-shaped with particle trail
+- **Scroll spy** — active nav link tracks current section
+- **Scroll reveal** — staggered entrance animations per section
+- **Parallax** — photo responds to mouse position in hero
+- **Heart rain** — easter egg triggered by clicking the photo
+- **CV download** — serves the correct language PDF based on active locale
+
+## Stack
+
+| Layer | Choice |
+|---|---|
+| Markup | HTML5 |
+| Styles | CSS3 — custom properties, keyframe animations, scroll-driven reveals |
+| Logic | Vanilla JS (ES2020) — no dependencies |
+| Fonts | Inter via Google Fonts |
+| Deploy | Vercel |
 
 ## Structure
 
 ```
-index.html          — entire site (HTML + CSS + JS in one file)
-photo.jpg           — profile photo (add your own, same folder)
-README.md
+portfolio/
+├── index.html   # markup
+├── style.css    # all styles and animations
+├── main.js      # interactivity and i18n
+├── photo.jpg    # hero photo
+└── CV/
+    ├── Resume - Valentina Morana.pdf
+    └── CV - Valentina Morana.pdf
 ```
 
-## Sections
+## Run locally
 
-1. Hero
-2. About (professional + personal cards, 3×2 grid)
-3. Languages
-4. Experience (timeline with ITPipes growth connector)
-5. Projects
-6. Skills
-7. Certifications
-8. Contact
-
-## Local development
-
-No setup needed — just open the file:
+No install needed — just serve the folder:
 
 ```bash
-open index.html
-# or
 npx serve .
 ```
+
+Then open `http://localhost:3000`.
