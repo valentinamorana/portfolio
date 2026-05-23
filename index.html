@@ -1086,8 +1086,8 @@ setLang('en');
 function downloadCV() {
   const lang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'es';
   const a = document.createElement('a');
-  a.href = lang === 'en' ? 'CV/cv-en.pdf' : 'CV/cv-es.pdf';
-  a.download = lang === 'en' ? 'Valentina_Morana_CV_EN.pdf' : 'Valentina_Morana_CV_ES.pdf';
+  a.href = lang === 'en' ? 'CV/Resume - Valentina Morana.pdf' : 'CV/CV - Valentina Morana.pdf';
+  a.download = lang === 'en' ? 'Resume - Valentina Morana.pdf' : 'CV - Valentina Morana.pdf';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
