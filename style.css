@@ -261,7 +261,7 @@ section { max-width: 1000px; margin: 0 auto; padding: 80px 2.5rem; }
   padding: 0.2rem 0.7rem; border-radius: 100px; width: fit-content;
 }
 
-/* ─── TIMELINE GROUP (mismo empleador) ─── */
+/* ─── TIMELINE GROUP ─── */
 .timeline-group { position: relative; }
 .timeline-group .timeline-item::before { display: none; }
 .timeline-group::before {
