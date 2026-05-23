@@ -308,6 +308,13 @@
       transition: border-color 0.2s, transform 0.2s;
     }
     .skill-card:hover { border-color: rgba(244,114,182,0.35); transform: translateY(-3px); }
+    .skill-card.highlight {
+      background: var(--grad-soft);
+      border-color: rgba(244,114,182,0.25);
+    }
+    .skill-card.highlight h4 {
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
     .skill-card .skill-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
     .skill-card h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.2rem; }
     .skill-card p { font-size: 0.78rem; color: var(--muted); }
@@ -405,9 +412,16 @@
       width: 200px; height: 200px; border-radius: 50%;
       background: rgba(192,132,252,0.07); pointer-events: none;
     }
+    @keyframes letsShimmer {
+      0%        { background-position: -150% center; }
+      60%, 100% { background-position: 250% center; }
+    }
     .contact-box h2 {
       font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.5rem;
-      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      background: linear-gradient(90deg, #f472b6 0%, #c084fc 30%, #ffffff 48%, #fda4cf 52%, #c084fc 70%, #f472b6 100%);
+      background-size: 250% auto;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: letsShimmer 3.2s ease-in-out infinite;
     }
     .contact-box p { color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
     .contact-links { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
@@ -646,7 +660,7 @@
       <h3 data-i18n="about_c2_title">Systems Engineering — 4th Year</h3>
       <p data-i18n="about_c2_desc">Studying at Universidad Abierta Interamericana with hands-on experience in SQL Server, .NET, Python and C++.</p>
     </div>
-    <div class="about-card">
+    <div class="about-card highlight">
       <span class="icon">📊</span>
       <h3 data-i18n="about_c4_title">Business + Tech Mindset</h3>
       <p data-i18n="about_c4_desc">Experience bridging data pipelines and business operations — from logistics reporting to cross-functional team coordination.</p>
@@ -656,7 +670,7 @@
       <h3 data-i18n="pers_c1_title">Robotics Enthusiast</h3>
       <p data-i18n="pers_c1_desc">I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.</p>
     </div>
-    <div class="about-card">
+    <div class="about-card highlight">
       <span class="icon">🗣️</span>
       <h3 data-i18n="pers_c2_title">Former English Teacher</h3>
       <p data-i18n="pers_c2_desc">I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.</p>
@@ -834,7 +848,7 @@
   <h2 class="section-title" data-i18n="skills_title">My toolkit.</h2>
   <p class="section-desc" data-i18n="skills_desc">From data analysis to desktop apps — the tools I use to build and ship things.</p>
   <div class="skills-grid">
-    <div class="skill-card">
+    <div class="skill-card highlight">
       <span class="skill-icon">🐍</span>
       <h4>Python</h4>
       <p data-i18n="skill1_desc">Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.</p>
@@ -844,7 +858,7 @@
       <h4>SQL Server</h4>
       <p data-i18n="skill2_desc">Relational DB design, stored procedures and C# integration.</p>
     </div>
-    <div class="skill-card">
+    <div class="skill-card highlight">
       <span class="skill-icon">💻</span>
       <h4>C# / .NET</h4>
       <p data-i18n="skill3_desc">Desktop apps with Windows Forms and OOP principles.</p>
@@ -859,7 +873,7 @@
       <h4>n8n / AI Agents</h4>
       <p data-i18n="skill5_desc">Automated AI agent workflows and integrations.</p>
     </div>
-    <div class="skill-card">
+    <div class="skill-card highlight">
       <span class="skill-icon">📈</span>
       <h4>Power BI</h4>
       <p data-i18n="skill6_desc">Interactive dashboards and data visualization for business reporting.</p>
@@ -869,7 +883,7 @@
       <h4>Git / GitHub</h4>
       <p data-i18n="skill7_desc">Version control, branching and collaborative development workflows.</p>
     </div>
-    <div class="skill-card">
+    <div class="skill-card highlight">
       <span class="skill-icon">🐧</span>
       <h4>Linux / Bash</h4>
       <p data-i18n="skill8_desc">Command line, shell scripting and file system management in Unix environments.</p>
@@ -946,15 +960,15 @@ const t = {
     pers_c3_title:"People Person",
     pers_c3_desc:"Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a dataset.",
     exp_label:"Experience", exp_title:"Where I've worked.",
-    exp0_desc:"Promoted to Senior BQA — leading quality control processes and raising data standards for AI pipelines across the team.",
+    exp0_desc:"Leading quality control processes and setting data accuracy standards for AI model training across the team.",
     exp0_tag:"🏆 Promoted",
-    exp1_desc:"Validated and quality-controlled pipeline inspection datasets under NASSCO standards, ensuring data integrity prior to AI model ingestion.",
-    exp1_tag:"AI &amp; Data Quality",
+    exp1_desc:"Validated and quality-controlled sewer and drainage inspection datasets under NASSCO standards, ensuring accurate defect data for AI model training and ingestion.",
+    exp1_tag:"AI &amp; Data Quality · NASSCO Standards",
     exp2_role:"Logistics Coordinator",
-    exp2_desc:"Promoted after 8 months — coordinated freight operations between clients, carriers and suppliers, managed shipment follow-ups and issue resolution, and led cross-functional workflow management in high-volume U.S. logistics environments.",
+    exp2_desc:"Coordinated freight operations between clients, carriers and suppliers. Managed shipment follow-ups, issue resolution, and led cross-functional workflow management in high-volume U.S. logistics environments.",
     exp2_tag:"🏆 Promoted",
     exp3_role:"Data Operations Analyst — Track &amp; Trace",
-    exp3_desc:"Monitored and analyzed real-time freight data for U.S.-based logistics operations — tracking shipments, identifying delays and reporting on carrier performance across multiple logistics platforms.",
+    exp3_desc:"Monitored and analyzed real-time freight data for U.S.-based logistics operations. Tracked shipments, identified delays and reported on carrier performance across multiple logistics platforms.",
     exp3_tag:"Data Ops · Reporting",
     exp4_role:"Bilingual Analyst — US Health Insurance",
     exp4_desc:"Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-stakes, detail-oriented environment.",
@@ -1012,15 +1026,15 @@ const t = {
     pers_c3_title:"Habilidades Sociales",
     pers_c3_desc:"Años de trabajo cara a clientes, liderazgo de equipos y enseñanza me hacen igual de cómoda en una reunión que frente a un dataset.",
     exp_label:"Experiencia", exp_title:"Dónde trabajé.",
-    exp0_desc:"Ascendida a Senior BQA — liderando procesos de control de calidad y elevando los estándares de datos para pipelines de IA.",
+    exp0_desc:"Liderando procesos de control de calidad y estableciendo estándares de precisión de datos para el entrenamiento de modelos de IA en el equipo.",
     exp0_tag:"🏆 Ascenso",
-    exp1_desc:"Validación y control de calidad de datasets de inspecciones bajo estándares NASSCO, asegurando la integridad de datos para modelos de IA.",
-    exp1_tag:"IA &amp; Calidad de Datos",
+    exp1_desc:"Validación y control de calidad de datasets de inspección de redes sanitarias y pluviales bajo estándares NASSCO, asegurando datos de defectos precisos para el entrenamiento e ingesta de modelos de IA.",
+    exp1_tag:"IA &amp; Calidad de Datos · NASSCO",
     exp2_role:"Coordinadora de Logística",
-    exp2_desc:"Ascendida a los 8 meses — coordiné operaciones de flete entre clientes, transportistas y proveedores, gestioné seguimientos de envíos y resolución de incidencias en entornos logísticos de alto volumen para EE.UU.",
+    exp2_desc:"Coordiné operaciones entre clientes, transportistas y proveedores. Gestioné seguimientos de envíos, resolución de incidencias y lideré la gestión de flujos de trabajo interfuncionales en entornos logísticos de alto volumen para EE.UU.",
     exp2_tag:"🏆 Ascenso",
     exp3_role:"Analista de Operaciones de Datos — Track &amp; Trace",
-    exp3_desc:"Monitoreo y análisis de datos de flete en tiempo real para operaciones logísticas con base en EE.UU. — seguimiento de envíos, identificación de demoras y reporting de rendimiento de transportistas en múltiples plataformas.",
+    exp3_desc:"Monitoreo y análisis de datos en tiempo real para operaciones logísticas con base en EE.UU. Seguimiento de envíos, identificación de demoras y reporte de performance en múltiples plataformas.",
     exp3_tag:"Data Ops · Reportes",
     exp4_role:"Analista Bilingüe — Seguros Médicos EE.UU.",
     exp4_desc:"Análisis de registros de pacientes para decisiones basadas en datos en seguros médicos de EE.UU. Trabajo 100% en inglés en un entorno de alta precisión y exigencia.",
@@ -1072,7 +1086,7 @@ setLang('en');
 function downloadCV() {
   const lang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'es';
   const a = document.createElement('a');
-  a.href = lang === 'en' ? 'cv/Resume Valentina Morana.pdf' : 'cv/cv-es.pdf';
+  a.href = lang === 'en' ? 'cv/cv-en.pdf' : 'cv/cv-es.pdf';
   a.download = lang === 'en' ? 'Valentina_Morana_CV_EN.pdf' : 'Valentina_Morana_CV_ES.pdf';
   document.body.appendChild(a);
   a.click();
@@ -1131,15 +1145,31 @@ document.querySelectorAll(
   '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card, .award-card'
 ).forEach(el => el.classList.add('reveal'));
 
+// stagger pre-calculado por sección, máx 150ms
+document.querySelectorAll('section').forEach(section => {
+  section.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = Math.min(i * 60, 150) + 'ms';
+  });
+});
+
 const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      entry.target.classList.add('visible');
+      entry.target.style.transitionDelay = '';
       revealObs.unobserve(entry.target);
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0 });
 document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// fallback: cualquier elemento que no haya disparado después de 2.5s
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+    el.classList.add('visible');
+    el.style.transitionDelay = '';
+  });
+}, 2500);
 
 /* ── SKILL BAR ANIMATION ── */
 const barObs = new IntersectionObserver((entries) => {
