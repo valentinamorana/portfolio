@@ -1187,11 +1187,13 @@ document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
 const spySections = document.querySelectorAll('section[id]');
 const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
 function updateSpy() {
-  const trigger = window.scrollY + window.innerHeight * 0.35;
+  const atBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 60;
+  const trigger  = window.scrollY + window.innerHeight * 0.5;
   let active = null;
   spySections.forEach(s => {
     if (s.getBoundingClientRect().top + window.scrollY <= trigger) active = s.id;
   });
+  if (atBottom) active = spySections[spySections.length - 1].id;
   spyLinks.forEach(a => a.classList.toggle('spy-active', a.getAttribute('href') === '#' + active));
 }
 window.addEventListener('scroll', updateSpy, { passive: true });
