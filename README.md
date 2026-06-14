@@ -34,7 +34,10 @@ portfolio/
 ├── index.html   # markup
 ├── style.css    # all styles and animations
 ├── main.js      # interactivity and i18n
-├── photo.jpg    # hero photo
+├── images/
+│   ├── photo.jpg     # hero photo
+│   ├── og-image.jpg  # social preview
+│   └── favicon.svg   # VM site icon
 └── CV/
     ├── Resume - Valentina Morana.pdf
     └── CV - Valentina Morana.pdf
