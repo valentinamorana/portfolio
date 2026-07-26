@@ -9,7 +9,7 @@ const t = {
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
     present:"Present",
     about_label:"About me", about_title:"Engineer in progress. Analyst in action",
-    about_desc:"Already working in the AI industry while finishing my degree, combining technical skills with real business experience.",
+    about_desc:"Passionate about data, people and technology, building experience in AI, engineering and business operations while finishing my degree and working in the AI industry.",
     about_c1_title:"AI &amp; Data Quality",
     about_c1_desc:"Validating datasets for AI model training at ITPipes under NASSCO standards. I make sure AI learns from clean, reliable data.",
     about_c2_title:"Systems Engineering — 4th Year",
@@ -36,7 +36,7 @@ const t = {
     exp4_role:"Bilingual Analyst — US Health Insurance",
     exp4_desc:"Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-stakes, detail-oriented environment.",
     skills_label:"Technical Skills", skills_title:"My toolkit",
-    skills_desc:"From data analysis to desktop apps: the tools I use to build and ship things.",
+    skills_desc:"The tools I use to build and ship things, from data analysis to desktop apps.",
     skill1_desc:"Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.",
     skill2_desc:"Relational DB design, stored procedures and C# integration.",
     skill3_desc:"Desktop apps with Windows Forms and OOP principles.",
@@ -46,7 +46,7 @@ const t = {
     skill7_desc:"Version control, branching and collaborative development workflows.",
     skill8_desc:"Command line, shell scripting and file system management in Unix environments.",
     proj_label:"Projects", proj_title:"Things I've built",
-    proj_desc:"Academic and personal projects, where theory meets real implementation.",
+    proj_desc:"Academic and personal projects where theory meets real implementation.",
     proj1_title:"Interactive Light Show — IoT System with Sound Sensor",
     proj1_desc:"Final project for the Robotics subject at UAI. Developed an IoT smart lighting system that reacts in real time to sound input — integrating hardware sensors with a mobile app built in Android Studio.",
     proj2_title:"Data Lake — Crime Statistics in Argentina",
@@ -54,7 +54,7 @@ const t = {
     proj3_title:"Statistical Inference &amp; Applied Probability — UAI Award",
     proj3_desc:"End-of-term project applying statistical inference, sampling theory and probability distributions to real-world data. Recognized with the \"Premio a las Buenas Prácticas\" by UAI and presented in the university's academic podcast.",
     certs_label:"Certifications", certs_title:"Always learning.",
-    certs_desc:"Continuous upskilling in AI, cloud, networking, security and English.",
+    certs_desc:"Continuous upskilling in AI, cloud, networking, security and more!",
     cert_google_name:"Google Data Analytics Certificate",
     cert_google_issuer:"Coursera / Google · Modules 1–2",
     cert_fresh_badge:"Just certified!",
@@ -105,7 +105,7 @@ const t = {
     exp4_role:"Analista Bilingüe — Seguros Médicos EE.UU.",
     exp4_desc:"Análisis de registros de pacientes para decisiones basadas en datos en seguros médicos de EE.UU. Trabajo 100% en inglés en un entorno de alta precisión y exigencia.",
     skills_label:"Habilidades Técnicas", skills_title:"Mi stack",
-    skills_desc:"Desde análisis de datos hasta apps de escritorio: las herramientas con las que construyo cosas.",
+    skills_desc:"Las herramientas que uso para construir y lanzar cosas, desde análisis de datos hasta apps de escritorio.",
     skill1_desc:"Pandas y NumPy para análisis de datos. Flujos de Data Science y Analytics.",
     skill2_desc:"Diseño de BD relacionales, procedimientos almacenados e integración con C#.",
     skill3_desc:"Apps de escritorio con Windows Forms y principios de POO.",
@@ -115,7 +115,7 @@ const t = {
     skill7_desc:"Control de versiones, branching y flujos de desarrollo colaborativo.",
     skill8_desc:"Línea de comandos, scripting en Bash y gestión del sistema de archivos en entornos Unix.",
     proj_label:"Proyectos", proj_title:"Cosas que construí",
-    proj_desc:"Proyectos académicos y personales, donde la teoría se convierte en algo real.",
+    proj_desc:"Proyectos académicos y personales donde la teoría se convierte en algo real.",
     proj1_title:"Light Show Interactivo — Sistema IoT con Sensor de Sonido",
     proj1_desc:"Proyecto final de la materia Robótica en la UAI. Desarrollé un sistema de iluminación inteligente que reacciona en tiempo real al sonido, integrando sensores de hardware con una app móvil en Android Studio.",
     proj2_title:"Data Lake — Estadísticas Criminales en la República Argentina",
@@ -123,7 +123,7 @@ const t = {
     proj3_title:"Inferencia Estadística y Probabilidad Aplicada — Premio UAI",
     proj3_desc:"Trabajo final de la materia que aplica inferencia estadística, teoría de muestreo y distribuciones de probabilidad a datos reales. Premiado con el \"Premio a las Buenas Prácticas\" de la UAI y presentado en el podcast académico universitario.",
     certs_label:"Certificaciones", certs_title:"Siempre aprendiendo.",
-    certs_desc:"Formación continua en IA, cloud, redes, seguridad e inglés profesional.",
+    certs_desc:"¡Formación continua en IA, cloud, redes, seguridad y más!",
     cert_google_name:"Certificado de Análisis de Datos de Google",
     cert_google_issuer:"Coursera / Google · Módulos 1–2",
     cert_fresh_badge:"¡Recién certificada!",
@@ -188,39 +188,6 @@ if (heroPhotoImg) {
   heroPhotoImg.addEventListener('error', () => {
     heroPhotoImg.closest('.hero-photo').innerHTML = '<div class="photo-placeholder"><span class="photo-icon">📷</span><span>Add your photo as<br><strong>images/photo.jpg</strong></span></div>';
   });
-}
-
-/* ── CUSTOM CURSOR + PARTICLE TRAIL ── */
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const cursorDot  = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-const trailColors = ['#f472b6','#c084fc','#f9a8d4','#e879f9','#a78bfa'];
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, lastParticle = 0;
-
-if (!prefersReducedMotion) {
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top  = mouseY + 'px';
-    const now = Date.now();
-    if (now - lastParticle > 35) {
-      lastParticle = now;
-      const p = document.createElement('div');
-      p.className = 'cursor-particle';
-      const size = (Math.random() * 5 + 3) + 'px';
-      p.style.cssText = `left:${mouseX}px;top:${mouseY}px;width:${size};height:${size};background:${trailColors[Math.floor(Math.random()*trailColors.length)]}`;
-      document.body.appendChild(p);
-      setTimeout(() => p.remove(), 560);
-    }
-  });
-
-  (function animateRing() {
-    ringX += (mouseX - ringX) * 0.1;
-    ringY += (mouseY - ringY) * 0.1;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top  = ringY + 'px';
-    requestAnimationFrame(animateRing);
-  })();
 }
 
 /* ── SCROLL REVEAL ── */
