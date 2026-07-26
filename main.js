@@ -3,7 +3,6 @@ const t = {
     skip_link:"Skip to content",
     nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
     hero_badge:"Open to opportunities",
-    badge_label:"Currently at",
     hero_title:"AI &amp; Data Analyst",
     hero_sub:`Systems Engineering student (4th year) already working in the AI industry, <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
@@ -12,14 +11,14 @@ const t = {
     about_desc:"Passionate about data, people and technology, building experience in AI, engineering and business operations while finishing my degree and working in the AI industry.",
     about_c1_title:"AI &amp; Data Quality",
     about_c1_desc:"Validating datasets for AI model training at ITPipes under NASSCO standards. I make sure AI learns from clean, reliable data.",
-    about_c2_title:"Systems Engineering — 4th Year",
+    about_c2_title:"Systems Engineering (4th Year)",
     about_c2_desc:"Studying at Universidad Abierta Interamericana with hands-on experience in SQL Server, .NET, Python and C++.",
     about_c4_title:"Business + Tech Mindset",
-    about_c4_desc:"Experience bridging data pipelines and business operations — from logistics reporting to cross-functional team coordination.",
+    about_c4_desc:"Experience bridging data pipelines and business operations, from logistics reporting to cross-functional team coordination.",
     pers_c1_title:"Robotics Enthusiast",
-    pers_c1_desc:"I genuinely enjoy building things — from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.",
+    pers_c1_desc:"I genuinely enjoy building things, from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.",
     pers_c2_title:"Former English Teacher",
-    pers_c2_desc:"I taught English before pivoting to tech. That background gives me strong communication skills — I explain complex ideas clearly, in two languages.",
+    pers_c2_desc:"I taught English before pivoting to tech. That background gives me strong communication skills. I explain complex ideas clearly, in two languages.",
     pers_c3_title:"People Person",
     pers_c3_desc:"Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a dataset.",
     exp_label:"Experience", exp_title:"Where I've worked.",
@@ -49,8 +48,8 @@ const t = {
     proj_desc:"Academic and personal projects where theory meets real implementation.",
     proj1_title:"Interactive Light Show — IoT System with Sound Sensor",
     proj1_desc:"Final project for the Robotics subject at UAI. Developed an IoT smart lighting system that reacts in real time to sound input — integrating hardware sensors with a mobile app built in Android Studio.",
-    proj2_title:"Data Lake — Crime Statistics in Argentina",
-    proj2_desc:"Data engineering project building a lake from public crime statistics in Argentina — structured, modeled and analyzed for insights.",
+    proj2_title:"Data Lake: Crime Statistics in Argentina",
+    proj2_desc:"Data engineering project building a lake from public crime statistics in Argentina: structured, modeled and analyzed for insights.",
     proj3_title:"Statistical Inference &amp; Applied Probability — UAI Award",
     proj3_desc:"End-of-term project applying statistical inference, sampling theory and probability distributions to real-world data. Recognized with the \"Premio a las Buenas Prácticas\" by UAI and presented in the university's academic podcast.",
     certs_label:"Certifications", certs_title:"Always learning.",
@@ -72,7 +71,6 @@ const t = {
     skip_link:"Saltar al contenido",
     nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
     hero_badge:"Abierta a oportunidades",
-    badge_label:"Actualmente en",
     hero_title:"Analista de IA &amp; Datos",
     hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA, <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
@@ -81,14 +79,14 @@ const t = {
     about_desc:"Apasionada por los datos, las personas y la tecnología, construyendo experiencia en IA, ingeniería y operaciones de negocio mientras termino mi carrera y trabajo en la industria de la inteligencia artificial.",
     about_c1_title:"IA &amp; Calidad de Datos",
     about_c1_desc:"Valido datasets para el entrenamiento de modelos de IA en ITPipes bajo estándares NASSCO. Me aseguro de que la IA aprenda con datos limpios y confiables.",
-    about_c2_title:"Ingeniería en Sistemas — 4º Año",
+    about_c2_title:"Ingeniería en Sistemas (4º Año)",
     about_c2_desc:"Estudiante en la UAI con experiencia práctica en SQL Server, .NET, Python y C++.",
     about_c4_title:"Mentalidad Técnica + Negocio",
-    about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio — desde reporting logístico hasta coordinación de equipos multidisciplinarios.",
+    about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio, desde reporting logístico hasta coordinación de equipos multidisciplinarios.",
     pers_c1_title:"Fanática de la Robótica",
-    pers_c1_desc:"Me encanta construir cosas — desde proyectos IoT hasta sistemas impulsados por IA. La robótica es donde vive mi curiosidad.",
+    pers_c1_desc:"Me encanta construir cosas, desde proyectos IoT hasta sistemas impulsados por IA. La robótica es donde vive mi curiosidad.",
     pers_c2_title:"Ex Profesora de Inglés",
-    pers_c2_desc:"Enseñé inglés antes de volcarme a la tecnología. Esa experiencia me da habilidades de comunicación sólidas — explico ideas complejas con claridad, en dos idiomas.",
+    pers_c2_desc:"Enseñé inglés antes de volcarme a la tecnología. Esa experiencia me da habilidades de comunicación sólidas. Explico ideas complejas con claridad, en dos idiomas.",
     pers_c3_title:"Habilidades Sociales",
     pers_c3_desc:"Años de trabajo cara a clientes, liderazgo de equipos y enseñanza me hacen igual de cómoda en una reunión que frente a un dataset.",
     exp_label:"Experiencia", exp_title:"Dónde trabajé.",
@@ -118,8 +116,8 @@ const t = {
     proj_desc:"Proyectos académicos y personales donde la teoría se convierte en algo real.",
     proj1_title:"Light Show Interactivo — Sistema IoT con Sensor de Sonido",
     proj1_desc:"Proyecto final de la materia Robótica en la UAI. Desarrollé un sistema de iluminación inteligente que reacciona en tiempo real al sonido, integrando sensores de hardware con una app móvil en Android Studio.",
-    proj2_title:"Data Lake — Estadísticas Criminales en la República Argentina",
-    proj2_desc:"Proyecto de ingeniería de datos construyendo un data lake a partir de estadísticas criminales públicas de Argentina — estructuradas, modeladas y analizadas.",
+    proj2_title:"Data Lake: Estadísticas Criminales en la República Argentina",
+    proj2_desc:"Proyecto de ingeniería de datos construyendo un data lake a partir de estadísticas criminales públicas de Argentina: estructuradas, modeladas y analizadas.",
     proj3_title:"Inferencia Estadística y Probabilidad Aplicada — Premio UAI",
     proj3_desc:"Trabajo final de la materia que aplica inferencia estadística, teoría de muestreo y distribuciones de probabilidad a datos reales. Premiado con el \"Premio a las Buenas Prácticas\" de la UAI y presentado en el podcast académico universitario.",
     certs_label:"Certificaciones", certs_title:"Siempre aprendiendo.",
@@ -164,7 +162,6 @@ setLang('en');
 document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
 document.getElementById('btn-es').addEventListener('click', () => setLang('es'));
 
-/* ── THEME TOGGLE ── */
 function toggleTheme() {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const next = isLight ? 'dark' : 'light';
@@ -182,7 +179,6 @@ function toggleTheme() {
 })();
 document.getElementById('theme-btn').addEventListener('click', toggleTheme);
 
-/* ── HERO PHOTO FALLBACK ── */
 const heroPhotoImg = document.getElementById('hero-photo-img');
 if (heroPhotoImg) {
   heroPhotoImg.addEventListener('error', () => {
@@ -190,9 +186,8 @@ if (heroPhotoImg) {
   });
 }
 
-/* ── SCROLL REVEAL ── */
 document.querySelectorAll(
-  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card, .award-card'
+  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card'
 ).forEach(el => el.classList.add('reveal'));
 
 document.querySelectorAll('section').forEach(section => {
@@ -219,18 +214,6 @@ setTimeout(() => {
   });
 }, 2500);
 
-/* ── SKILL BAR ANIMATION ── */
-const barObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.width = e.target.dataset.level + '%';
-      barObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
-
-/* ── SCROLL SPY ── */
 const spySections = document.querySelectorAll('section[id]');
 const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
 function updateSpy() {
@@ -243,10 +226,7 @@ function updateSpy() {
   if (atBottom) active = spySections[spySections.length - 1].id;
   spyLinks.forEach(a => a.classList.toggle('spy-active', a.getAttribute('href') === '#' + active));
 }
-window.addEventListener('scroll', updateSpy, { passive: true });
-updateSpy();
 
-/* ── BLOB SCROLL DRIFT ── */
 const blob1 = document.querySelector('.blob-1');
 const blob2 = document.querySelector('.blob-2');
 function driftBlobs() {
@@ -254,9 +234,21 @@ function driftBlobs() {
   if (blob1) blob1.style.top  = (-200 + p * 700) + 'px';
   if (blob2) blob2.style.bottom = (-150 + (1 - p) * 350) + 'px';
 }
-window.addEventListener('scroll', driftBlobs, { passive: true });
 
-/* ── PHOTO CLICK → HEART RAIN ── */
+let scrollTicking = false;
+function onScroll() {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    updateSpy();
+    driftBlobs();
+    scrollTicking = false;
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+updateSpy();
+driftBlobs();
+
 const photoClick = document.getElementById('photo-click');
 if (photoClick && !prefersReducedMotion) {
   photoClick.addEventListener('click', () => {
@@ -277,7 +269,6 @@ if (photoClick && !prefersReducedMotion) {
   });
 }
 
-/* ── HERO PHOTO PARALLAX ── */
 const heroEl    = document.querySelector('.hero');
 const photoWrap = document.querySelector('.hero-photo-wrap');
 if (heroEl && photoWrap && !prefersReducedMotion) {
