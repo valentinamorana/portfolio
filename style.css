@@ -316,6 +316,31 @@ section { max-width: 1000px; margin: 0 auto; padding: 80px 2.5rem; }
 .cert-name { font-size: 0.8rem; font-weight: 700; color: var(--white); display: block; margin-bottom: 2px; }
 .cert-issuer { font-size: 0.72rem; color: var(--muted); }
 
+/* ─── JUST CERTIFIED BANNER ─── */
+.cert-fresh {
+  margin-top: 0.85rem;
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  background: var(--grad-soft); border: 1px solid rgba(244,114,182,0.3);
+  border-radius: var(--radius-sm); padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.cert-fresh:hover { border-color: rgba(244,114,182,0.55); transform: translateY(-2px); }
+.cert-fresh-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(244,114,182,0.14); border: 1px solid rgba(244,114,182,0.35);
+  color: var(--pink-soft); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 0.35rem 0.85rem; border-radius: 100px; flex-shrink: 0;
+}
+.cert-fresh-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--pink); animation: pulse 2s infinite;
+}
+.cert-fresh-body { display: flex; flex-direction: column; gap: 2px; }
+.cert-fresh-name { font-size: 0.88rem; font-weight: 700; color: var(--white); }
+.cert-fresh-issuer { font-size: 0.75rem; color: var(--muted); }
+
 /* ─── PROJECTS ─── */
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .project-card {
