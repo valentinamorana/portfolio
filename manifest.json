@@ -1,0 +1,15 @@
+{
+  "name": "Valentina Morana — AI & Data Analyst",
+  "short_name": "Valentina Morana",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09060f",
+  "theme_color": "#09060f",
+  "icons": [
+    {
+      "src": "images/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
