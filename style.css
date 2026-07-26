@@ -167,23 +167,6 @@ nav {
 }
 .photo-placeholder .photo-icon { font-size: 2.5rem; }
 
-.hero-stack-badge {
-  position: absolute; bottom: -16px; left: -20px; z-index: 2;
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 0.75rem 1.1rem;
-  display: flex; align-items: center; gap: 0.6rem;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-}
-.hero-stack-badge .badge-icon {
-  width: 32px; height: 32px; border-radius: 8px;
-  background: var(--grad); display: flex; align-items: center; justify-content: center;
-  font-size: 0.9rem; flex-shrink: 0;
-}
-.hero-stack-badge .badge-text { display: flex; flex-direction: column; gap: 1px; }
-.hero-stack-badge .badge-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
-.hero-stack-badge .badge-value { font-size: 0.82rem; font-weight: 700; color: var(--white); }
-
 .section-wrap { position: relative; z-index: 1; }
 section { max-width: 1000px; margin: 0 auto; padding: 80px 2.5rem; }
 .divider { border: none; border-top: 1px solid var(--border); margin: 0; position: relative; z-index: 1; }
@@ -351,17 +334,6 @@ section { max-width: 1000px; margin: 0 auto; padding: 80px 2.5rem; }
   color: #d8b4fe; font-size: 0.68rem; font-weight: 600;
   padding: 0.18rem 0.6rem; border-radius: 100px;
 }
-.award-card {
-  background: linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(244,114,182,0.08) 100%);
-  border: 1px solid rgba(251,191,36,0.2);
-  border-radius: var(--radius); padding: 1.5rem 1.75rem;
-  display: flex; align-items: flex-start; gap: 1rem;
-}
-.award-icon { font-size: 2rem; flex-shrink: 0; }
-.award-title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem; }
-.award-meta { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
-.award-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
-
 .lang-cards { display: flex; gap: 1rem; flex-wrap: wrap; }
 .lang-card {
   flex: 1; min-width: 200px;
@@ -442,12 +414,6 @@ footer {
     padding: 56px 1.5rem 56px;
   }
   .hero-photo-wrap { width: 190px; height: 228px; margin: 0 auto; }
-  .hero-stack-badge {
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -22px;
-    white-space: nowrap;
-  }
 
   section { padding: 56px 1.5rem; }
 

@@ -3,7 +3,6 @@ const t = {
     skip_link:"Skip to content",
     nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
     hero_badge:"Open to opportunities",
-    badge_label:"Currently at",
     hero_title:"AI &amp; Data Analyst",
     hero_sub:`Systems Engineering student (4th year) already working in the AI industry, <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
@@ -72,7 +71,6 @@ const t = {
     skip_link:"Saltar al contenido",
     nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
     hero_badge:"Abierta a oportunidades",
-    badge_label:"Actualmente en",
     hero_title:"Analista de IA &amp; Datos",
     hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA, <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
@@ -189,7 +187,7 @@ if (heroPhotoImg) {
 }
 
 document.querySelectorAll(
-  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card, .award-card'
+  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card'
 ).forEach(el => el.classList.add('reveal'));
 
 document.querySelectorAll('section').forEach(section => {
@@ -215,16 +213,6 @@ setTimeout(() => {
     el.style.transitionDelay = '';
   });
 }, 2500);
-
-const barObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.style.width = e.target.dataset.level + '%';
-      barObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
 
 const spySections = document.querySelectorAll('section[id]');
 const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
