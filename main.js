@@ -164,7 +164,6 @@ setLang('en');
 document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
 document.getElementById('btn-es').addEventListener('click', () => setLang('es'));
 
-/* ── THEME TOGGLE ── */
 function toggleTheme() {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const next = isLight ? 'dark' : 'light';
@@ -182,7 +181,6 @@ function toggleTheme() {
 })();
 document.getElementById('theme-btn').addEventListener('click', toggleTheme);
 
-/* ── HERO PHOTO FALLBACK ── */
 const heroPhotoImg = document.getElementById('hero-photo-img');
 if (heroPhotoImg) {
   heroPhotoImg.addEventListener('error', () => {
@@ -190,7 +188,6 @@ if (heroPhotoImg) {
   });
 }
 
-/* ── SCROLL REVEAL ── */
 document.querySelectorAll(
   '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card, .award-card'
 ).forEach(el => el.classList.add('reveal'));
@@ -219,7 +216,6 @@ setTimeout(() => {
   });
 }, 2500);
 
-/* ── SKILL BAR ANIMATION ── */
 const barObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -230,7 +226,6 @@ const barObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.skill-bar').forEach(b => barObs.observe(b));
 
-/* ── SCROLL SPY ── */
 const spySections = document.querySelectorAll('section[id]');
 const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
 function updateSpy() {
@@ -243,10 +238,7 @@ function updateSpy() {
   if (atBottom) active = spySections[spySections.length - 1].id;
   spyLinks.forEach(a => a.classList.toggle('spy-active', a.getAttribute('href') === '#' + active));
 }
-window.addEventListener('scroll', updateSpy, { passive: true });
-updateSpy();
 
-/* ── BLOB SCROLL DRIFT ── */
 const blob1 = document.querySelector('.blob-1');
 const blob2 = document.querySelector('.blob-2');
 function driftBlobs() {
@@ -254,9 +246,21 @@ function driftBlobs() {
   if (blob1) blob1.style.top  = (-200 + p * 700) + 'px';
   if (blob2) blob2.style.bottom = (-150 + (1 - p) * 350) + 'px';
 }
-window.addEventListener('scroll', driftBlobs, { passive: true });
 
-/* ── PHOTO CLICK → HEART RAIN ── */
+let scrollTicking = false;
+function onScroll() {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    updateSpy();
+    driftBlobs();
+    scrollTicking = false;
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+updateSpy();
+driftBlobs();
+
 const photoClick = document.getElementById('photo-click');
 if (photoClick && !prefersReducedMotion) {
   photoClick.addEventListener('click', () => {
@@ -277,7 +281,6 @@ if (photoClick && !prefersReducedMotion) {
   });
 }
 
-/* ── HERO PHOTO PARALLAX ── */
 const heroEl    = document.querySelector('.hero');
 const photoWrap = document.querySelector('.hero-photo-wrap');
 if (heroEl && photoWrap && !prefersReducedMotion) {

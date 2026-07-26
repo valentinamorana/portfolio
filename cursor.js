@@ -1,4 +1,3 @@
-/* ── CUSTOM CURSOR + PARTICLE TRAIL (shared across pages) ── */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cursorDot  = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
