@@ -14,21 +14,53 @@
   <meta name="twitter:title" content="Valentina Morana — AI &amp; Data Analyst"/>
   <meta name="twitter:description" content="Systems Engineering student (4th year) working in AI quality at ITPipes. Open to data, AI and software roles."/>
   <meta name="twitter:image" content="https://valentinamorana.vercel.app/images/og-image.jpg"/>
-  <title>Valentina Morana</title>
+  <title>Valentina Morana — AI &amp; Data Analyst</title>
+  <link rel="canonical" href="https://valentinamorana.vercel.app/"/>
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg"/>
   <link rel="apple-touch-icon" href="images/favicon.svg"/>
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#09060f"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://vitals.vercel-insights.com"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="preload" as="image" href="images/photo.webp" type="image/webp" fetchpriority="high"/>
   <link rel="stylesheet" href="style.css"/>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Valentina Morana",
+    "jobTitle": "AI & Data Analyst",
+    "url": "https://valentinamorana.vercel.app/",
+    "image": "https://valentinamorana.vercel.app/images/photo.jpg",
+    "email": "mailto:valentinamorana@gmail.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/valentinamorana/",
+      "https://github.com/valentinamorana"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Abierta Interamericana"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "ITPipes"
+    }
+  }
+  </script>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link" data-i18n="skip_link">Skip to content</a>
+
 <!-- custom cursor -->
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-ring" id="cursor-ring"></div>
+<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
 
 <!-- ambient blobs -->
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
+<div class="blob blob-1" aria-hidden="true"></div>
+<div class="blob blob-2" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav>
@@ -42,14 +74,16 @@
       <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
       <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
     </ul>
-    <button class="cv-btn" onclick="downloadCV()" title="Download CV">CV ↓</button>
-    <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
-      <button class="lang-btn" onclick="setLang('es')" id="btn-es">ES</button>
+    <a class="cv-btn" href="CV/Resume - Valentina Morana.pdf" download="Resume - Valentina Morana.pdf" id="cv-btn" aria-label="Download CV">CV ↓</a>
+    <button class="theme-btn" id="theme-btn" aria-label="Toggle dark/light theme">🌙</button>
+    <div class="lang-toggle" role="group" aria-label="Language switcher">
+      <button class="lang-btn active" id="btn-en" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="btn-es" aria-pressed="false">ES</button>
     </div>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- HERO -->
 <div class="hero">
@@ -59,11 +93,11 @@
       <span data-i18n="hero_badge">Open to opportunities</span>
     </div>
     <h1>
-      <span class="name">Valentina Morana.</span>
+      <span class="name">Valentina Morana</span>
       <span class="title" data-i18n="hero_title">AI &amp; Data Analyst.</span>
     </h1>
     <p class="hero-sub" data-i18n="hero_sub">
-      Systems Engineering student (4th year) already working in the AI industry —
+      Systems Engineering student (4th year) already working in the AI industry,
       <strong>ensuring data accuracy</strong> at ITPipes.<br/>
       Bilingual English–Spanish (C2).
     </p>
@@ -75,7 +109,10 @@
 
   <div class="hero-photo-wrap">
     <div class="hero-photo" id="photo-click">
-      <img src="images/photo.jpg" alt="Valentina Morana" onerror="this.parentElement.innerHTML='<div class=\'photo-placeholder\'><span class=\'photo-icon\'>📷</span><span>Add your photo as<br><strong>images/photo.jpg</strong></span></div>'"/>
+      <picture>
+        <source srcset="images/photo.webp" type="image/webp"/>
+        <img id="hero-photo-img" src="images/photo.jpg" width="700" height="1050" alt="Valentina Morana" fetchpriority="high"/>
+      </picture>
     </div>
   </div>
 </div>
@@ -365,14 +402,14 @@
 </section>
 </div>
 
+</main>
+
 <footer>
   <span data-i18n="footer">Valentina Morana · 2026</span>
 </footer>
 
-<script src="main.js"></script>
-<script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
+<script defer src="main.js"></script>
+<script defer src="analytics-init.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

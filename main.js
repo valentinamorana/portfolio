@@ -1,10 +1,11 @@
 const t = {
   en: {
+    skip_link:"Skip to content",
     nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
     hero_badge:"Open to opportunities",
     badge_label:"Currently at",
     hero_title:"AI &amp; Data Analyst.",
-    hero_sub:`Systems Engineering student (4th year) already working in the AI industry — <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
+    hero_sub:`Systems Engineering student (4th year) already working in the AI industry, <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
     hero_cta1:"Get in touch →", hero_cta2:"See my experience",
     present:"Present",
     about_label:"About me", about_title:"Engineer in progress. Analyst in action.",
@@ -66,11 +67,12 @@ const t = {
     footer:"Valentina Morana · 2026"
   },
   es: {
+    skip_link:"Saltar al contenido",
     nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
     hero_badge:"Abierta a oportunidades",
     badge_label:"Actualmente en",
     hero_title:"Analista de IA &amp; Datos.",
-    hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA — <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
+    hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA, <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
     hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
     present:"Actualidad",
     about_label:"Sobre mí", about_title:"Ingeniera en progreso. Analista en acción.",
@@ -133,27 +135,30 @@ const t = {
   }
 };
 
+const cvBtn = document.getElementById('cv-btn');
+function updateCvHref(lang) {
+  if (!cvBtn) return;
+  cvBtn.href = lang === 'en' ? 'CV/Resume - Valentina Morana.pdf' : 'CV/CV - Valentina Morana.pdf';
+  cvBtn.download = lang === 'en' ? 'Resume - Valentina Morana.pdf' : 'CV - Valentina Morana.pdf';
+}
+
 function setLang(lang) {
-  document.getElementById('btn-en').classList.toggle('active', lang==='en');
-  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  const btnEn = document.getElementById('btn-en');
+  const btnEs = document.getElementById('btn-es');
+  btnEn.classList.toggle('active', lang==='en');
+  btnEn.setAttribute('aria-pressed', lang==='en');
+  btnEs.classList.toggle('active', lang==='es');
+  btnEs.setAttribute('aria-pressed', lang==='es');
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const k = el.getAttribute('data-i18n');
     if (t[lang][k] !== undefined) el.innerHTML = t[lang][k];
   });
   document.documentElement.lang = lang;
+  updateCvHref(lang);
 }
 setLang('en');
-
-/* ── CV DOWNLOAD ── */
-function downloadCV() {
-  const lang = document.getElementById('btn-en').classList.contains('active') ? 'en' : 'es';
-  const a = document.createElement('a');
-  a.href = lang === 'en' ? 'CV/Resume - Valentina Morana.pdf' : 'CV/CV - Valentina Morana.pdf';
-  a.download = lang === 'en' ? 'Resume - Valentina Morana.pdf' : 'CV - Valentina Morana.pdf';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
+document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
+document.getElementById('btn-es').addEventListener('click', () => setLang('es'));
 
 /* ── THEME TOGGLE ── */
 function toggleTheme() {
@@ -171,36 +176,48 @@ function toggleTheme() {
     if (btn) btn.textContent = '☀️';
   }
 })();
+document.getElementById('theme-btn').addEventListener('click', toggleTheme);
+
+/* ── HERO PHOTO FALLBACK ── */
+const heroPhotoImg = document.getElementById('hero-photo-img');
+if (heroPhotoImg) {
+  heroPhotoImg.addEventListener('error', () => {
+    heroPhotoImg.closest('.hero-photo').innerHTML = '<div class="photo-placeholder"><span class="photo-icon">📷</span><span>Add your photo as<br><strong>images/photo.jpg</strong></span></div>';
+  });
+}
 
 /* ── CUSTOM CURSOR + PARTICLE TRAIL ── */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cursorDot  = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
 const trailColors = ['#f472b6','#c084fc','#f9a8d4','#e879f9','#a78bfa'];
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, lastParticle = 0;
 
-document.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  cursorDot.style.left = mouseX + 'px';
-  cursorDot.style.top  = mouseY + 'px';
-  const now = Date.now();
-  if (now - lastParticle > 35) {
-    lastParticle = now;
-    const p = document.createElement('div');
-    p.className = 'cursor-particle';
-    const size = (Math.random() * 5 + 3) + 'px';
-    p.style.cssText = `left:${mouseX}px;top:${mouseY}px;width:${size};height:${size};background:${trailColors[Math.floor(Math.random()*trailColors.length)]}`;
-    document.body.appendChild(p);
-    setTimeout(() => p.remove(), 560);
-  }
-});
+if (!prefersReducedMotion) {
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top  = mouseY + 'px';
+    const now = Date.now();
+    if (now - lastParticle > 35) {
+      lastParticle = now;
+      const p = document.createElement('div');
+      p.className = 'cursor-particle';
+      const size = (Math.random() * 5 + 3) + 'px';
+      p.style.cssText = `left:${mouseX}px;top:${mouseY}px;width:${size};height:${size};background:${trailColors[Math.floor(Math.random()*trailColors.length)]}`;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 560);
+    }
+  });
 
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.1;
-  ringY += (mouseY - ringY) * 0.1;
-  cursorRing.style.left = ringX + 'px';
-  cursorRing.style.top  = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
+  (function animateRing() {
+    ringX += (mouseX - ringX) * 0.1;
+    ringY += (mouseY - ringY) * 0.1;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+}
 
 /* ── SCROLL REVEAL ── */
 document.querySelectorAll(
@@ -270,7 +287,7 @@ window.addEventListener('scroll', driftBlobs, { passive: true });
 
 /* ── PHOTO CLICK → HEART RAIN ── */
 const photoClick = document.getElementById('photo-click');
-if (photoClick) {
+if (photoClick && !prefersReducedMotion) {
   photoClick.addEventListener('click', () => {
     const hearts = ['❤️','💜','💗','💕','💓','💖'];
     for (let i = 0; i < 28; i++) {
@@ -292,7 +309,7 @@ if (photoClick) {
 /* ── HERO PHOTO PARALLAX ── */
 const heroEl    = document.querySelector('.hero');
 const photoWrap = document.querySelector('.hero-photo-wrap');
-if (heroEl && photoWrap) {
+if (heroEl && photoWrap && !prefersReducedMotion) {
   heroEl.addEventListener('mousemove', (e) => {
     const r  = heroEl.getBoundingClientRect();
     const dx = (e.clientX - (r.left + r.width  / 2)) / r.width;
