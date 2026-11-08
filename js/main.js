@@ -1,3 +1,5 @@
+window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+
 (function () {
   var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
