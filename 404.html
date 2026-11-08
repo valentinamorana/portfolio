@@ -1,49 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="/theme-init.js"></script>
   <meta name="robots" content="noindex"/>
-  <title>Page not found — Valentina Morana</title>
-  <link rel="canonical" href="https://valentinamorana.vercel.app/"/>
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg"/>
-  <link rel="apple-touch-icon" href="images/favicon.svg"/>
-  <link rel="manifest" href="manifest.json"/>
-  <meta name="theme-color" content="#09060f"/>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self'"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-  <script defer src="theme-init.js"></script>
-  <script defer src="cursor.js"></script>
+  <title>Page not found · Valentina Morana</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png"/>
+  <link rel="apple-touch-icon" href="/images/icon-180.png"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <meta name="theme-color" content="#FBF7F9" media="(prefers-color-scheme: light)"/>
+  <meta name="theme-color" content="#120C14" media="(prefers-color-scheme: dark)"/>
+  <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 
 <a href="#main-content" class="skip-link">Skip to content</a>
+<div class="cursor-sparkle" id="cursor-sparkle" aria-hidden="true"><svg width="22" height="22" viewBox="5 2 14 14"><path d="M12 2c.6 4.8 2.2 6.4 7 7-4.8.6-6.4 2.2-7 7-.6-4.8-2.2-6.4-7-7 4.8-.6 6.4-2.2 7-7z" fill="currentColor"/></svg></div>
 
-<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-<div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+<div class="page">
+  <div class="shapes" aria-hidden="true">
+    <div class="shape shape-blob-pink"></div>
+    <div class="shape shape-ring"></div>
+    <svg class="shape shape-star shape-star-1" width="40" height="40" viewBox="0 0 24 24"><path d="M12 2c.6 4.8 2.2 6.4 7 7-4.8.6-6.4 2.2-7 7-.6-4.8-2.2-6.4-7-7 4.8-.6 6.4-2.2 7-7z" fill="currentColor"/></svg>
+  </div>
 
-<div class="blob blob-1" aria-hidden="true"></div>
-<div class="blob blob-2" aria-hidden="true"></div>
+  <header class="wrap site-header">
+    <div class="nav-bar">
+      <a href="/" class="nav-logo">Valentina Morana</a>
+      <a href="/" class="btn btn-dark">Home</a>
+    </div>
+  </header>
 
-<nav>
-  <a href="/" class="nav-logo">Valentina Morana</a>
-</nav>
-
-<main id="main-content">
-  <div class="error-page">
+  <main id="main-content" class="error-page">
     <span class="error-code">404</span>
     <h1 class="error-title">Page not found</h1>
     <p class="error-desc">The page you're looking for doesn't exist or was moved.</p>
-    <a href="/" class="btn-primary">Take me home →</a>
-  </div>
-</main>
+    <a href="/" class="btn btn-accent btn-lg">Take me home →</a>
+  </main>
 
-<footer>
-  <span>Valentina Morana · 2026</span>
-</footer>
+  <footer class="site-footer">Valentina Morana</footer>
+</div>
 
+<script defer src="/cursor.js"></script>
 </body>
 </html>
