@@ -1,284 +1,366 @@
-const t = {
-  en: {
-    skip_link:"Skip to content",
-    nav_about:"About", nav_exp:"Experience", nav_proj:"Projects", nav_skills:"Skills", nav_certs:"Certifications", nav_contact:"Contact",
-    hero_badge:"Open to opportunities",
-    hero_title:"AI &amp; Data Analyst",
-    hero_sub:`Systems Engineering student (4th year) already working in the AI industry, <strong>ensuring data accuracy</strong> at ITPipes.<br/>Bilingual English–Spanish (C2).`,
-    hero_cta1:"Get in touch →", hero_cta2:"See my experience",
-    present:"Present",
-    about_label:"About me", about_title:"Engineer in progress. Analyst in action.",
-    about_desc:"Passionate about data, people and technology, building experience in AI, engineering and business operations while finishing my degree and working in the AI industry.",
-    about_c1_title:"AI &amp; Data Quality",
-    about_c1_desc:"Validating datasets for AI model training at ITPipes under NASSCO standards. I make sure AI learns from clean, reliable data.",
-    about_c2_title:"Systems Engineering (4th Year)",
-    about_c2_desc:"Studying at Universidad Abierta Interamericana with hands-on experience in SQL Server, .NET, Python and C++.",
-    about_c4_title:"Business + Tech Mindset",
-    about_c4_desc:"Experience bridging data pipelines and business operations, from logistics reporting to cross-functional team coordination.",
-    pers_c1_title:"Robotics Enthusiast",
-    pers_c1_desc:"I genuinely enjoy building things, from IoT hardware projects to AI-driven systems. Robotics is where my curiosity lives.",
-    pers_c2_title:"Former English Teacher",
-    pers_c2_desc:"I taught English before pivoting to tech. That background gives me strong communication skills. I explain complex ideas clearly, in two languages.",
-    pers_c3_title:"People Person",
-    pers_c3_desc:"Years of client-facing work, team leadership and teaching mean I'm just as comfortable in a meeting room as I am in a dataset.",
-    exp_label:"Experience", exp_title:"Where I've worked.",
-    exp0_desc:"Leading quality control processes and setting data accuracy standards for AI model training across the team.",
-    exp0_tag:"🏆 Promoted",
-    exp1_desc:"Validated and quality-controlled sewer and drainage inspection datasets under NASSCO standards, ensuring accurate defect data for AI model training and ingestion.",
-    exp1_tag:"AI &amp; Data Quality · NASSCO Standards",
-    exp2_role:"Logistics Coordinator",
-    exp2_desc:"Coordinated freight operations between clients, carriers and suppliers. Managed shipment follow-ups, issue resolution, and led cross-functional workflow management in high-volume U.S. logistics environments.",
-    exp2_tag:"🏆 Promoted",
-    exp3_role:"Data Operations Analyst — Track &amp; Trace",
-    exp3_desc:"Monitored and analyzed real-time freight data for U.S.-based logistics operations. Tracked shipments, identified delays and reported on carrier performance across multiple logistics platforms.",
-    exp3_tag:"Data Ops · Reporting",
-    exp4_role:"Bilingual Analyst — US Health Insurance",
-    exp4_desc:"Analyzed patient records for data-driven decisions in US health insurance cases. Worked entirely in English in a high-stakes, detail-oriented environment.",
-    skills_label:"Technical Skills", skills_title:"My toolkit.",
-    skills_desc:"The tools I use to build and ship things, from data analysis to desktop apps.",
-    skill1_desc:"Pandas &amp; NumPy for data analysis. Data Science and Analytics workflows.",
-    skill2_desc:"Relational DB design, stored procedures and C# integration.",
-    skill3_desc:"Desktop apps with Windows Forms and OOP principles.",
-    skill4_desc:"Performance programming, data structures, memory management.",
-    skill5_desc:"Automated AI agent workflows and integrations.",
-    skill6_desc:"Interactive dashboards and data visualization for business reporting.",
-    skill7_desc:"Version control, branching and collaborative development workflows.",
-    skill8_desc:"Command line, shell scripting and file system management in Unix environments.",
-    proj_label:"Projects", proj_title:"Things I've built.",
-    proj_desc:"Academic and personal projects where theory meets real implementation.",
-    proj1_title:"Interactive Light Show — IoT System with Sound Sensor",
-    proj1_desc:"Final project for the Robotics subject at UAI. Developed an IoT smart lighting system that reacts in real time to sound input — integrating hardware sensors with a mobile app built in Android Studio.",
-    proj2_title:"Data Lake: Crime Statistics in Argentina",
-    proj2_desc:"Data engineering project building a lake from public crime statistics in Argentina: structured, modeled and analyzed for insights.",
-    proj3_title:"Statistical Inference &amp; Applied Probability — UAI Award",
-    proj3_desc:"End-of-term project applying statistical inference, sampling theory and probability distributions to real-world data. Recognized with the \"Premio a las Buenas Prácticas\" by UAI and presented in the university's academic podcast.",
-    certs_label:"Certifications", certs_title:"Always learning.",
-    certs_desc:"Continuous upskilling in AI, cloud, networking, security and more.",
-    cert_google_name:"Google Data Analytics Certificate",
-    cert_google_issuer:"Coursera / Google · Modules 1–2",
-    cert_fresh_badge:"Just certified!",
-    cert_fresh_issuer:"NASSCO, Inc. · See the post on LinkedIn →",
-    lang_label:"Languages", lang_title:"I speak your language.",
-    lang1_name:"Spanish", lang1_level:"Native",
-    lang1_desc:"Native speaker. Fluent in professional, technical, and everyday contexts.",
-    lang2_name:"English",
-    lang2_desc:"Cambridge C1 Grade A · EF SET 81/100. Fully comfortable in English-only environments, meetings and written communication.",
-    contact_title:"Let's work together.",
-    contact_desc:"Open to full-time and freelance roles in data, AI and software development.",
-    footer:"Valentina Morana · 2026"
-  },
-  es: {
-    skip_link:"Saltar al contenido",
-    nav_about:"Sobre mí", nav_exp:"Experiencia", nav_proj:"Proyectos", nav_skills:"Habilidades", nav_certs:"Certificaciones", nav_contact:"Contacto",
-    hero_badge:"Abierta a oportunidades",
-    hero_title:"Analista de IA &amp; Datos",
-    hero_sub:`Estudiante de Ing. en Sistemas (4º año) que ya trabaja en la industria de IA, <strong>garantizando la calidad de datos</strong> en ITPipes.<br/>Bilingüe inglés–español (C2).`,
-    hero_cta1:"Contactame →", hero_cta2:"Ver mi experiencia",
-    present:"Actualidad",
-    about_label:"Sobre mí", about_title:"Ingeniera en progreso. Analista en acción.",
-    about_desc:"Apasionada por los datos, las personas y la tecnología, construyendo experiencia en IA, ingeniería y operaciones de negocio mientras termino mi carrera y trabajo en la industria de la inteligencia artificial.",
-    about_c1_title:"IA &amp; Calidad de Datos",
-    about_c1_desc:"Valido datasets para el entrenamiento de modelos de IA en ITPipes bajo estándares NASSCO. Me aseguro de que la IA aprenda con datos limpios y confiables.",
-    about_c2_title:"Ingeniería en Sistemas (4º Año)",
-    about_c2_desc:"Estudiante en la UAI con experiencia práctica en SQL Server, .NET, Python y C++.",
-    about_c4_title:"Mentalidad Técnica + Negocio",
-    about_c4_desc:"Experiencia conectando pipelines de datos y operaciones de negocio, desde reporting logístico hasta coordinación de equipos multidisciplinarios.",
-    pers_c1_title:"Fanática de la Robótica",
-    pers_c1_desc:"Me encanta construir cosas, desde proyectos IoT hasta sistemas impulsados por IA. La robótica es donde vive mi curiosidad.",
-    pers_c2_title:"Ex Profesora de Inglés",
-    pers_c2_desc:"Enseñé inglés antes de volcarme a la tecnología. Esa experiencia me da habilidades de comunicación sólidas. Explico ideas complejas con claridad, en dos idiomas.",
-    pers_c3_title:"Habilidades Sociales",
-    pers_c3_desc:"Años de trabajo cara a clientes, liderazgo de equipos y enseñanza me hacen igual de cómoda en una reunión que frente a un dataset.",
-    exp_label:"Experiencia", exp_title:"Dónde trabajé.",
-    exp0_desc:"Liderando procesos de control de calidad y estableciendo estándares de precisión de datos para el entrenamiento de modelos de IA en el equipo.",
-    exp0_tag:"🏆 Ascenso",
-    exp1_desc:"Validación y control de calidad de datasets de inspección de redes sanitarias y pluviales bajo estándares NASSCO, asegurando datos de defectos precisos para el entrenamiento e ingesta de modelos de IA.",
-    exp1_tag:"IA &amp; Calidad de Datos · NASSCO",
-    exp2_role:"Coordinadora de Logística",
-    exp2_desc:"Coordiné operaciones entre clientes, transportistas y proveedores. Gestioné seguimientos de envíos, resolución de incidencias y lideré la gestión de flujos de trabajo interfuncionales en entornos logísticos de alto volumen para EE.UU.",
-    exp2_tag:"🏆 Ascenso",
-    exp3_role:"Analista de Operaciones de Datos — Track &amp; Trace",
-    exp3_desc:"Monitoreo y análisis de datos en tiempo real para operaciones logísticas con base en EE.UU. Seguimiento de envíos, identificación de demoras y reporte de performance en múltiples plataformas.",
-    exp3_tag:"Data Ops · Reportes",
-    exp4_role:"Analista Bilingüe — Seguros Médicos EE.UU.",
-    exp4_desc:"Análisis de registros de pacientes para decisiones basadas en datos en seguros médicos de EE.UU. Trabajo 100% en inglés en un entorno de alta precisión y exigencia.",
-    skills_label:"Habilidades Técnicas", skills_title:"Mi stack.",
-    skills_desc:"Las herramientas que uso para construir y lanzar cosas, desde análisis de datos hasta apps de escritorio.",
-    skill1_desc:"Pandas y NumPy para análisis de datos. Flujos de Data Science y Analytics.",
-    skill2_desc:"Diseño de BD relacionales, procedimientos almacenados e integración con C#.",
-    skill3_desc:"Apps de escritorio con Windows Forms y principios de POO.",
-    skill4_desc:"Programación de rendimiento, estructuras de datos, manejo de memoria.",
-    skill5_desc:"Flujos automatizados con agentes de IA e integraciones.",
-    skill6_desc:"Dashboards interactivos y visualización de datos para reporting de negocio.",
-    skill7_desc:"Control de versiones, branching y flujos de desarrollo colaborativo.",
-    skill8_desc:"Línea de comandos, scripting en Bash y gestión del sistema de archivos en entornos Unix.",
-    proj_label:"Proyectos", proj_title:"Cosas que construí.",
-    proj_desc:"Proyectos académicos y personales donde la teoría se convierte en algo real.",
-    proj1_title:"Light Show Interactivo — Sistema IoT con Sensor de Sonido",
-    proj1_desc:"Proyecto final de la materia Robótica en la UAI. Desarrollé un sistema de iluminación inteligente que reacciona en tiempo real al sonido, integrando sensores de hardware con una app móvil en Android Studio.",
-    proj2_title:"Data Lake: Estadísticas Criminales en la República Argentina",
-    proj2_desc:"Proyecto de ingeniería de datos construyendo un data lake a partir de estadísticas criminales públicas de Argentina: estructuradas, modeladas y analizadas.",
-    proj3_title:"Inferencia Estadística y Probabilidad Aplicada — Premio UAI",
-    proj3_desc:"Trabajo final de la materia que aplica inferencia estadística, teoría de muestreo y distribuciones de probabilidad a datos reales. Premiado con el \"Premio a las Buenas Prácticas\" de la UAI y presentado en el podcast académico universitario.",
-    certs_label:"Certificaciones", certs_title:"Siempre aprendiendo.",
-    certs_desc:"Formación continua en IA, cloud, redes, seguridad y más.",
-    cert_google_name:"Certificado de Análisis de Datos de Google",
-    cert_google_issuer:"Coursera / Google · Módulos 1–2",
-    cert_fresh_badge:"¡Recién certificada!",
-    cert_fresh_issuer:"NASSCO, Inc. · Ver el post en LinkedIn →",
-    lang_label:"Idiomas", lang_title:"Hablo tu idioma.",
-    lang1_name:"Español", lang1_level:"Nativo",
-    lang1_desc:"Hablante nativa. Fluida en contextos profesionales, técnicos y cotidianos.",
-    lang2_name:"Inglés",
-    lang2_desc:"Cambridge C1 Grade A · EF SET 81/100. Completamente cómoda en entornos en inglés, reuniones y comunicación escrita.",
-    contact_title:"Trabajemos juntos.",
-    contact_desc:"Abierta a roles de tiempo completo y freelance en datos, IA y desarrollo de software.",
-    footer:"Valentina Morana · 2026"
-  }
-};
+(function () {
+  var root = document.documentElement;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SITE = 'https://www.valentinamorana.com/';
+  var GH_USER = 'valentinamorana';
+  var GH_SKIP = [];
 
-const cvBtn = document.getElementById('cv-btn');
-function updateCvHref(lang) {
-  if (!cvBtn) return;
-  cvBtn.href = lang === 'en' ? 'CV/Resume - Valentina Morana.pdf' : 'CV/CV - Valentina Morana.pdf';
-  cvBtn.download = lang === 'en' ? 'Resume - Valentina Morana.pdf' : 'CV - Valentina Morana.pdf';
-}
+  var es = {
+    skip_link: 'Saltar al contenido',
+    nav_label: 'Principal',
+    nav_work: 'Experiencia', nav_projects: 'Proyectos', nav_skills: 'Skills', nav_contact: 'Contacto',
+    theme_label: 'Modo oscuro',
+    lang_label: 'Idioma',
+    cv_btn: 'Descargar CV',
+    hero_status: 'Abierta a oportunidades',
+    hero_cert: 'Recién certificada: NASSCO PACP · LACP · MACP v8',
+    hero_role: 'AI Model Training: Data Quality &amp; Validation',
+    hero_sub: 'Estudiante de Ingeniería en Sistemas (4.º año) que ya trabaja en la industria de la IA, liderando la calidad de datos para el entrenamiento de modelos de IA en ITpipes. Bilingüe español–inglés (C2).',
+    hero_cta1: 'Contactame →',
+    hero_cta2: 'Ver mi experiencia',
+    photo_label: 'Valentina Morana, hacé clic para una sorpresa',
+    now_building: 'Construyendo ahora · en vivo desde GitHub',
+    now_commit_fallback: 'El último commit se actualiza acá automáticamente',
+    now_learning: 'Aprendiendo ahora',
+    now_learning_title: 'Ciberseguridad, Hacking Ético y Riesgo Digital',
+    now_learning_detail: 'UAI Advance · microcredencial en curso',
+    about_title: 'Ingeniera en proceso. <span class="accent">Analista en acción.</span>',
+    about_text: 'Conecto los pipelines de datos con las operaciones del negocio y explico ideas complejas con claridad, en español y en inglés.',
+    work_title: 'Dónde trabajé',
+    d_itp: 'Sep 2025 – Actualidad',
+    d_itp_r1: 'Abr 2026 – Actualidad',
+    d_itp_r2: 'Sep 2025 – Abr 2026',
+    d_pls: 'Jun 2024 – Ago 2025',
+    d_pls_r1: 'Ene 2025 – Ago 2025',
+    d_pls_r2: 'Jun 2024 – Ene 2025',
+    d_bis: 'Dic 2023 – Jun 2024',
+    job1_meta: '2 puestos · IA y calidad de datos',
+    job1_r1_desc: 'Lidero el control de calidad del equipo: defino estándares y criterios de validación de datos para entrenar modelos de IA bajo NASSCO, hago auditorías de calidad e impulso la mejora continua.',
+    promoted: 'Ascendida',
+    job1_r2_desc: 'Validación y clasificación de inspecciones de infraestructura contra estándares NASSCO, detección de errores en datasets y video para el entrenamiento de IA, y reportes de consistencia y desempeño.',
+    job2_meta: '2 puestos · logística en EE.UU.',
+    job2_r1_title: 'Coordinadora de Logística',
+    job2_r1_desc: 'Coordinación con clientes, transportistas y proveedores de EE.UU.; tarifas y liderazgo de equipos.',
+    job2_r2_title: 'Analista de Operaciones de Datos, Track &amp; Trace',
+    job2_r2_desc: 'Monitoreo y análisis de datos de transporte en tiempo real, detección de anomalías y demoras, y soporte a la validación de facturación.',
+    job3_title: 'Analista Bilingüe, Seguros Médicos EE.UU.',
+    job3_desc: 'Gestión y análisis de registros de pacientes para la toma de decisiones, 100% en inglés.',
+    projects_title: 'Lo que construí',
+    p1_desc: 'Sistema de escritorio para una empresa de alquiler de ropa por suscripción, del alta del cliente al despacho y la devolución.',
+    p1_b1: 'Arquitectura en capas con 6 patrones de diseño',
+    p1_b2: 'Datos encriptados, login seguro y bitácora de auditoría',
+    p1_b3: 'Instalador de un clic que configura la base de datos',
+    view_github: 'Ver en GitHub ↗',
+    p2_title: 'Show de luces interactivo: IoT con sensor de sonido',
+    p2_desc: 'Iluminación inteligente que reacciona al sonido en tiempo real, con una app para Android.',
+    p3_title: 'Data Lake: estadísticas criminales en Argentina',
+    p3_desc: 'Estadísticas criminales públicas estructuradas, modeladas y analizadas.',
+    more_github: '…y muchos más en GitHub',
+    skills_label: 'Habilidades y certificaciones',
+    toolkit_title: 'Mis herramientas',
+    sk_languages: 'Lenguajes',
+    sk_frameworks: 'Frameworks y librerías',
+    sk_data: 'Datos y BI',
+    sk_automation: 'Automatización',
+    sk_tools: 'Herramientas',
+    certs_title: 'Siempre aprendiendo',
+    cert_new: 'Nuevo',
+    cert_google: 'Análisis de Datos · Foundations of Project Management',
+    contact_title: '¡Trabajemos juntos!',
+    contact_sub: 'Abierta a oportunidades full-time y freelance.'
+  };
 
-function setLang(lang) {
-  const btnEn = document.getElementById('btn-en');
-  const btnEs = document.getElementById('btn-es');
-  btnEn.classList.toggle('active', lang==='en');
-  btnEn.setAttribute('aria-pressed', lang==='en');
-  btnEs.classList.toggle('active', lang==='es');
-  btnEs.setAttribute('aria-pressed', lang==='es');
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (t[lang][k] !== undefined) el.innerHTML = t[lang][k];
+  var ui = {
+    en: {
+      theme_to_dark: 'Switch to dark mode', theme_to_light: 'Switch to light mode',
+      updated: 'updated', locale: 'en'
+    },
+    es: {
+      theme_to_dark: 'Cambiar a modo oscuro', theme_to_light: 'Cambiar a modo claro',
+      updated: 'actualizado', locale: 'es'
+    }
+  };
+
+  var en = {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var k = el.getAttribute('data-i18n');
+    if (!(k in en)) en[k] = el.innerHTML;
   });
-  document.documentElement.lang = lang;
-  updateCvHref(lang);
-}
-setLang('en');
-document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
-document.getElementById('btn-es').addEventListener('click', () => setLang('es'));
+  document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+    var k = el.getAttribute('data-i18n-aria');
+    if (!(k in en)) en[k] = el.getAttribute('aria-label');
+  });
+  var dict = { en: en, es: es };
 
-function toggleTheme() {
-  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  const next = isLight ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', next);
-  document.getElementById('theme-btn').textContent = next === 'light' ? '☀️' : '🌙';
-  localStorage.setItem('theme', next);
-}
-(function initTheme() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    const btn = document.getElementById('theme-btn');
-    if (btn) btn.textContent = '☀️';
+  var currentLang = root.lang === 'es' ? 'es' : 'en';
+
+  function store(key, value) {
+    try { localStorage.setItem(key, value); } catch (e) {}
   }
+
+  function updateCv(lang) {
+    var cv = document.getElementById('cv-btn');
+    if (!cv) return;
+    var file = lang === 'es' ? 'CV - Valentina Morana.pdf' : 'Resume - Valentina Morana.pdf';
+    cv.href = 'CV/' + file;
+    cv.setAttribute('download', file);
+  }
+
+  function updateUrl(lang) {
+    try {
+      var url = new URL(window.location.href);
+      if (lang === 'es') url.searchParams.set('lang', 'es'); else url.searchParams.delete('lang');
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    } catch (e) {}
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = lang === 'es' ? SITE + '?lang=es' : SITE;
+  }
+
+  function setLang(lang, persist) {
+    currentLang = lang;
+    var d = dict[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (d[k] !== undefined) el.innerHTML = d[k];
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-aria');
+      if (d[k] !== undefined) el.setAttribute('aria-label', d[k]);
+    });
+    root.lang = lang;
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+    });
+    updateCv(lang);
+    updateThemeLabel();
+    renderNowBuilding();
+    renderNowLearning();
+    if (persist) { store('lang', lang); updateUrl(lang); }
+    root.classList.remove('i18n-pending');
+  }
+
+  var themeBtn = document.getElementById('theme-btn');
+  function updateThemeLabel() {
+    if (!themeBtn) return;
+    var dark = root.getAttribute('data-theme') === 'dark';
+    themeBtn.setAttribute('aria-pressed', dark ? 'true' : 'false');
+    themeBtn.setAttribute('aria-label', dark ? ui[currentLang].theme_to_light : ui[currentLang].theme_to_dark);
+  }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      store('theme', next);
+      updateThemeLabel();
+    });
+  }
+
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var lang = b.getAttribute('data-set-lang');
+      if (lang !== currentLang) setLang(lang, true);
+    });
+  });
+
+  var nowData = null;
+  function timeAgo(iso) {
+    var diff = (new Date(iso).getTime() - Date.now()) / 1000;
+    var units = [['year', 31536000], ['month', 2592000], ['week', 604800], ['day', 86400], ['hour', 3600], ['minute', 60]];
+    var rtf = new Intl.RelativeTimeFormat(ui[currentLang].locale, { numeric: 'auto', style: 'short' });
+    for (var i = 0; i < units.length; i++) {
+      if (Math.abs(diff) >= units[i][1]) return rtf.format(Math.round(diff / units[i][1]), units[i][0]);
+    }
+    return rtf.format(Math.round(diff), 'second');
+  }
+  function renderNowBuilding() {
+    if (!nowData) return;
+    var link = document.getElementById('now-building');
+    var repo = document.getElementById('now-repo');
+    var commit = document.getElementById('now-commit');
+    if (link) link.href = nowData.url;
+    if (repo) repo.textContent = nowData.repo;
+    if (commit) {
+      commit.removeAttribute('data-i18n');
+      commit.textContent = nowData.message || ui[currentLang].updated;
+      commit.title = nowData.message || '';
+    }
+    var ago = document.getElementById('now-ago');
+    if (ago) ago.textContent = timeAgo(nowData.date);
+  }
+  function loadNowBuilding() {
+    var cacheKey = 'now-building-v2';
+    try {
+      var cached = JSON.parse(sessionStorage.getItem(cacheKey) || 'null');
+      if (cached && Date.now() - cached.at < 600000) { nowData = cached.data; renderNowBuilding(); return; }
+    } catch (e) {}
+    if (!window.fetch) return;
+    var gh = { headers: { Accept: 'application/vnd.github+json' } };
+    fetch('https://api.github.com/users/' + GH_USER + '/repos?sort=pushed&per_page=10&type=owner', gh)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (repos) {
+        var candidates = repos.filter(function (x) { return !x.fork && !x.private && !x.archived && GH_SKIP.indexOf(x.name) === -1; }).slice(0, 3);
+        if (!candidates.length) throw new Error('no repo');
+        return Promise.all(candidates.map(function (repo) {
+          return fetch('https://api.github.com/repos/' + GH_USER + '/' + repo.name + '/commits?per_page=1', gh)
+            .then(function (r) { return r.ok ? r.json() : []; })
+            .catch(function () { return []; })
+            .then(function (commits) {
+              var c = commits && commits[0];
+              return {
+                repo: repo.name,
+                url: c ? c.html_url : repo.html_url,
+                message: c ? String(c.commit.message).split('\n')[0].slice(0, 90) : '',
+                date: c ? (c.commit.committer || c.commit.author).date : repo.pushed_at
+              };
+            });
+        }));
+      })
+      .then(function (list) {
+        return list.sort(function (a, b) { return new Date(b.date) - new Date(a.date); })[0];
+      })
+      .then(function (data) {
+        nowData = data;
+        try {
+          sessionStorage.setItem(cacheKey, JSON.stringify({ at: Date.now(), data: data }));
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+        } catch (e) {}
+        renderNowBuilding();
+      })
+      .catch(function () {
+        try {
+          var last = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+          if (last) { nowData = last; renderNowBuilding(); }
+        } catch (e) {}
+      });
+  }
+
+  var learning = null;
+  function renderNowLearning() {
+    var data = learning && (learning[currentLang] || learning.en);
+    if (!data) return;
+    var title = document.getElementById('now-learn-title');
+    var sub = document.getElementById('now-learn-sub');
+    if (title && data.title) title.textContent = data.title;
+    if (sub && data.sub) sub.textContent = data.sub;
+  }
+  function loadNowLearning() {
+    if (!window.fetch) return;
+    fetch('data/now.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (json) {
+        if (!json || !json.learning) return;
+        learning = json.learning;
+        ['title', 'sub'].forEach(function (f) {
+          var el = document.getElementById(f === 'title' ? 'now-learn-title' : 'now-learn-sub');
+          if (el) el.removeAttribute('data-i18n');
+        });
+        renderNowLearning();
+      })
+      .catch(function () {});
+  }
+
+  var photoBtn = document.getElementById('photo-btn');
+  var photoImg = document.getElementById('hero-photo-img');
+  if (photoImg) {
+    photoImg.addEventListener('error', function () {
+      var pic = photoImg.closest('picture');
+      if (pic) pic.remove();
+      var fallback = document.createElement('span');
+      fallback.className = 'photo-fallback';
+      fallback.setAttribute('aria-hidden', 'true');
+      fallback.textContent = 'VM';
+      if (photoBtn) photoBtn.appendChild(fallback);
+    });
+  }
+  if (photoBtn && !reduceMotion) {
+    photoBtn.addEventListener('click', function () {
+      var heartSvg = '<svg viewBox="0 0 24 24" width="100%" height="100%" aria-hidden="true"><path fill="currentColor" d="M12 21s-7.5-4.6-10-9.3C.4 8.6 2.1 4.5 6 4.1c2.2-.2 4 1 6 3.2 2-2.2 3.8-3.4 6-3.2 3.9.4 5.6 4.5 4 7.6C19.5 16.4 12 21 12 21z"/></svg>';
+      var tones = ['var(--accent)', 'var(--accent)', 'var(--pink-ink)', 'var(--star-lilac)'];
+      for (var i = 0; i < 28; i++) {
+        setTimeout(function () {
+          var h = document.createElement('span');
+          var dur = Math.random() * 1.2 + 2.2;
+          var size = Math.random() * 18 + 14;
+          h.className = 'heart-rain';
+          h.innerHTML = heartSvg;
+          h.style.color = tones[Math.floor(Math.random() * tones.length)];
+          h.style.width = size + 'px';
+          h.style.height = size + 'px';
+          h.style.left = (Math.random() * 92 + 4) + 'vw';
+          h.style.animationDuration = dur + 's';
+          h.addEventListener('animationend', function () { h.remove(); });
+          document.body.appendChild(h);
+        }, i * 55);
+      }
+    });
+  }
+
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    root.classList.add('reveal-off');
+  } else {
+    var revealObs = new IntersectionObserver(function (entries) {
+      var shown = entries.filter(function (e) { return e.isIntersecting; });
+      shown.forEach(function (entry, i) {
+        var el = entry.target;
+        el.style.transitionDelay = Math.min(i * 90, 360) + 'ms';
+        el.classList.add('is-visible');
+        revealObs.unobserve(el);
+        el.addEventListener('transitionend', function done(ev) {
+          if (ev.propertyName !== 'opacity') return;
+          el.classList.remove('reveal', 'is-visible');
+          el.style.transitionDelay = '';
+          el.removeEventListener('transitionend', done);
+        });
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(function (el) { revealObs.observe(el); });
+  }
+
+  var spyLinks = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var spySections = spyLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  var shapes = Array.prototype.slice.call(document.querySelectorAll('.shape[data-depth]'));
+  var header = document.querySelector('.site-header');
+  var ticking = false;
+  function onScroll() {
+    ticking = false;
+    var y = window.scrollY;
+    var mid = y + window.innerHeight * 0.4;
+    if (header) header.classList.toggle('is-stuck', y > 12);
+    var atBottom = y + window.innerHeight >= document.documentElement.scrollHeight - 40;
+    var active = null;
+    spySections.forEach(function (s) { if (s.offsetTop <= mid) active = s.id; });
+    if (atBottom && spySections.length) active = spySections[spySections.length - 1].id;
+    spyLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === '#' + active); });
+    if (!reduceMotion) {
+      shapes.forEach(function (s) {
+        s.style.transform = 'translate3d(0,' + (y * parseFloat(s.getAttribute('data-depth'))).toFixed(1) + 'px,0)';
+      });
+    }
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  onScroll();
+
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.chips-lg span').forEach(function (chip) {
+      chip.addEventListener('mousemove', function (e) {
+        var r = chip.getBoundingClientRect();
+        chip.style.setProperty('--mx', ((e.clientX - r.left) / r.width - 0.5) * 6 + 'px');
+        chip.style.setProperty('--my', ((e.clientY - r.top) / r.height - 0.5) * 4 + 'px');
+      });
+      chip.addEventListener('mouseleave', function () {
+        chip.style.removeProperty('--mx');
+        chip.style.removeProperty('--my');
+      });
+    });
+  }
+
+  var year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  setLang(currentLang, false);
+  loadNowBuilding();
+  loadNowLearning();
 })();
-document.getElementById('theme-btn').addEventListener('click', toggleTheme);
-
-const heroPhotoImg = document.getElementById('hero-photo-img');
-if (heroPhotoImg) {
-  heroPhotoImg.addEventListener('error', () => {
-    heroPhotoImg.closest('.hero-photo').innerHTML = '<div class="photo-placeholder"><span class="photo-icon">📷</span><span>Add your photo as<br><strong>images/photo.jpg</strong></span></div>';
-  });
-}
-
-document.querySelectorAll(
-  '.about-card, .timeline-item, .project-card, .skill-card, .cert-card, .lang-card'
-).forEach(el => el.classList.add('reveal'));
-
-document.querySelectorAll('section').forEach(section => {
-  section.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = Math.min(i * 60, 150) + 'ms';
-  });
-});
-
-const revealObs = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      entry.target.style.transitionDelay = '';
-      revealObs.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-setTimeout(() => {
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-    el.classList.add('visible');
-    el.style.transitionDelay = '';
-  });
-}, 2500);
-
-const spySections = document.querySelectorAll('section[id]');
-const spyLinks    = document.querySelectorAll('.nav-links a[href^="#"]');
-function updateSpy() {
-  const atBottom = window.scrollY + window.innerHeight >= document.body.scrollHeight - 60;
-  const trigger  = window.scrollY + window.innerHeight * 0.5;
-  let active = null;
-  spySections.forEach(s => {
-    if (s.getBoundingClientRect().top + window.scrollY <= trigger) active = s.id;
-  });
-  if (atBottom) active = spySections[spySections.length - 1].id;
-  spyLinks.forEach(a => a.classList.toggle('spy-active', a.getAttribute('href') === '#' + active));
-}
-
-const blob1 = document.querySelector('.blob-1');
-const blob2 = document.querySelector('.blob-2');
-function driftBlobs() {
-  const p = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
-  if (blob1) blob1.style.top  = (-200 + p * 700) + 'px';
-  if (blob2) blob2.style.bottom = (-150 + (1 - p) * 350) + 'px';
-}
-
-let scrollTicking = false;
-function onScroll() {
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
-    updateSpy();
-    driftBlobs();
-    scrollTicking = false;
-  });
-}
-window.addEventListener('scroll', onScroll, { passive: true });
-updateSpy();
-driftBlobs();
-
-const photoClick = document.getElementById('photo-click');
-if (photoClick && !prefersReducedMotion) {
-  photoClick.addEventListener('click', () => {
-    const hearts = ['❤️','💜','💗','💕','💓','💖'];
-    for (let i = 0; i < 28; i++) {
-      setTimeout(() => {
-        const h = document.createElement('span');
-        h.className = 'heart-rain';
-        h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
-        const size = Math.random() * 20 + 14;
-        const left = Math.random() * 92 + 4;
-        const dur  = Math.random() * 1.2 + 2.2;
-        h.style.cssText += `font-size:${size}px;left:${left}vw;top:-40px;animation-duration:${dur}s;`;
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), dur * 1000 + 200);
-      }, i * 55);
-    }
-  });
-}
-
-const heroEl    = document.querySelector('.hero');
-const photoWrap = document.querySelector('.hero-photo-wrap');
-if (heroEl && photoWrap && !prefersReducedMotion) {
-  heroEl.addEventListener('mousemove', (e) => {
-    const r  = heroEl.getBoundingClientRect();
-    const dx = (e.clientX - (r.left + r.width  / 2)) / r.width;
-    const dy = (e.clientY - (r.top  + r.height / 2)) / r.height;
-    photoWrap.style.transform = `translate(${dx * -16}px, ${dy * -12}px)`;
-  });
-  heroEl.addEventListener('mouseleave', () => {
-    photoWrap.style.transform = 'translate(0, 0)';
-  });
-}
