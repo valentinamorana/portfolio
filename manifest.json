@@ -1,15 +1,22 @@
 {
-  "name": "Valentina Morana — AI & Data Analyst",
+  "name": "Valentina Morana | AI Model Training: Data Quality & Validation",
   "short_name": "Valentina Morana",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#09060f",
-  "theme_color": "#09060f",
+  "display": "browser",
+  "background_color": "#FBF7F9",
+  "theme_color": "#C42A6E",
   "icons": [
     {
-      "src": "images/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
