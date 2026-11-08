@@ -9,7 +9,10 @@
 
   var x = 0, y = 0, lastX = 0, lastY = 0, lastTrail = 0, frame = 0;
   var trailColors = ['var(--accent)', 'var(--star-lilac)', '#F3A6C8', 'var(--btn-line)'];
+  var accentTrail = ['var(--contact-ink)', 'var(--shimmer)'];
   var interactive = 'a, button, [role="button"], input, textarea, select, label';
+  var accentSurface = '.contact-card, .btn-accent, .lang-opt[aria-pressed="true"], .theme-knob';
+  var onAccent = false;
 
   function render() {
     frame = 0;
@@ -25,7 +28,8 @@
     s.className = 'sparkle-trail';
     s.style.width = size + 'px';
     s.style.height = size + 'px';
-    s.style.color = trailColors[Math.floor(Math.random() * trailColors.length)];
+    var palette = onAccent ? accentTrail : trailColors;
+    s.style.color = palette[Math.floor(Math.random() * palette.length)];
     s.style.setProperty('--x', (x + (Math.random() * 8 - 4)) + 'px');
     s.style.setProperty('--y', (y + (Math.random() * 8 - 4)) + 'px');
     s.addEventListener('animationend', function () { s.remove(); });
@@ -35,7 +39,10 @@
   document.addEventListener('mousemove', function (e) {
     x = e.clientX; y = e.clientY;
     root.classList.remove('cursor-hidden');
-    root.classList.toggle('cursor-hover', !!(e.target.closest && e.target.closest(interactive)));
+    var t = e.target.closest ? e.target : null;
+    root.classList.toggle('cursor-hover', !!(t && t.closest(interactive)));
+    onAccent = !!(t && t.closest(accentSurface) && !t.closest('.contact-link-solid'));
+    root.classList.toggle('cursor-on-accent', onAccent);
     if (!frame) frame = requestAnimationFrame(render);
     spawnTrail(performance.now());
   }, { passive: true });
