@@ -352,6 +352,15 @@ a.now-item:hover .now-arrow { color: var(--accent); transform: translate(2px, -2
   position: relative; margin: 18px 0 18px -48px; display: inline-flex; align-items: center; gap: 6px;
   font-size: 12px; font-weight: 700; background: var(--pink-soft); color: var(--pink-ink);
   padding: 5px 12px; border-radius: 999px; border: 2px solid var(--surface);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.promoted svg { animation: promoRise 3.2s ease-in-out infinite; }
+.promoted:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--accent) 50%, transparent); }
+@keyframes promoRise {
+  0%, 55%, 100% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(-5px); opacity: 0; }
+  71% { transform: translateY(5px); opacity: 0; }
+  85% { transform: translateY(0); opacity: 1; }
 }
 
 .bn-grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
