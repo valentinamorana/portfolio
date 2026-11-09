@@ -346,6 +346,7 @@ a.now-item:hover .now-arrow { color: var(--accent); transform: translate(2px, -2
 .role-dot-single { left: 0; }
 .role-dates { font-size: 13px; font-weight: 600; color: var(--muted); }
 .role-title { margin-top: 2px; font-family: var(--head); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; line-height: 1.3; }
+.job-roles-single { align-self: center; }
 .job-roles-single .role-title { margin-top: 0; }
 .role-desc { margin-top: 6px; color: var(--body); }
 .promoted {
@@ -500,6 +501,17 @@ a.now-item:hover .now-arrow { color: var(--accent); transform: translate(2px, -2
 .contact-link-outline:hover { color: var(--contact-ink); }
 
 .site-footer { padding: 0 16px 40px; text-align: center; font-size: 13px; color: var(--muted); }
+.to-top {
+  position: fixed; right: clamp(16px, 3vw, 32px); bottom: clamp(16px, 3vw, 32px); z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--surface); color: var(--accent); border: 1px solid var(--line);
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--accent) 55%, transparent);
+  opacity: 0; visibility: hidden; transform: translateY(12px) scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, box-shadow 0.25s ease;
+}
+.to-top.is-shown { opacity: 1; visibility: visible; transform: none; }
+.to-top.is-shown:hover { transform: translateY(-3px); color: var(--accent); box-shadow: 0 14px 28px -12px color-mix(in srgb, var(--accent) 70%, transparent); }
+.to-top:hover svg { animation: promoRise 1.2s ease-in-out infinite; }
 
 .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2, .7, .2, 1); }
 .js .reveal.is-visible, .reveal-off .reveal { opacity: 1; transform: none; }

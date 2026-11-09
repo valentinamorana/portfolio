@@ -10,6 +10,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   var es = {
     skip_link: 'Saltar al contenido',
     nav_label: 'Principal',
+    to_top: 'Volver arriba',
     nav_work: 'Experiencia', nav_projects: 'Proyectos', nav_skills: 'Skills', nav_contact: 'Contacto',
     theme_label: 'Modo oscuro',
     lang_label: 'Idioma',
@@ -37,16 +38,16 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     d_pls_r2: 'Jun 2024 – Ene 2025',
     d_bis: 'Dic 2023 – Jun 2024',
     job1_meta: '2 puestos · IA y calidad de datos',
-    job1_r1_desc: 'Lidero el control de calidad del equipo: defino estándares y criterios de validación de datos para entrenar modelos de IA bajo NASSCO, hago auditorías de calidad e impulso la mejora continua.',
+    job1_r1_desc: 'Lidero el control de calidad del equipo: defino criterios de validación de datos de entrenamiento de IA basados en estándares NASSCO, audito el trabajo del equipo e impulso la mejora continua.',
     promoted: 'Ascendida',
-    job1_r2_desc: 'Validación y clasificación de inspecciones de infraestructura contra estándares NASSCO, detección de errores en datasets y video para el entrenamiento de IA, y reportes de consistencia y desempeño.',
+    job1_r2_desc: 'Validé, clasifiqué y etiqueté datasets de inspecciones de infraestructura según los estándares NASSCO, detecté errores e inconsistencias en datos y video para el entrenamiento de modelos de IA y elaboré reportes de consistencia, desempeño y resultados.',
     job2_meta: '2 puestos · logística en EE.UU.',
     job2_r1_title: 'Coordinadora de Logística',
-    job2_r1_desc: 'Coordinación con clientes, transportistas y proveedores de EE.UU.; tarifas y liderazgo de equipos.',
+    job2_r1_desc: 'Fui responsable de las cargas de punta a punta: validé disponibilidad de transportistas, distancias y datos de envío, coordiné con clientes, transportistas y proveedores de EE.UU., resolví problemas de programación y entrega, y negocié tarifas.',
     job2_r2_title: 'Analista de Operaciones de Datos, Track &amp; Trace',
-    job2_r2_desc: 'Monitoreo y análisis de datos de transporte en tiempo real, detección de anomalías y demoras, y soporte a la validación de facturación.',
-    job3_title: 'Analista Bilingüe, Seguros Médicos EE.UU.',
-    job3_desc: 'Gestión y análisis de registros de pacientes para la toma de decisiones, 100% en inglés.',
+    job2_r2_desc: 'Monitoreé y analicé datos de transporte en tiempo real en múltiples plataformas logísticas, detecté anomalías y demoras, y di soporte a la validación de facturación y al reporting operativo.',
+    job3_title: 'Analista de Seguros Médicos',
+    job3_desc: 'Investigué y validé información de pacientes para casos de seguros médicos de EE.UU., completé datos faltantes y mantuve los registros precisos para la toma de decisiones.',
     projects_title: 'Lo que construí',
     p1_desc: 'Sistema de escritorio para una empresa de alquiler de ropa por suscripción, del alta del cliente al despacho y la devolución.',
     p1_b1: 'Arquitectura en capas con 6 patrones de diseño',
@@ -323,12 +324,14 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   var spySections = spyLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
   var shapes = Array.prototype.slice.call(document.querySelectorAll('.shape[data-depth]'));
   var header = document.querySelector('.site-header');
+  var toTop = document.querySelector('.to-top');
   var ticking = false;
   function onScroll() {
     ticking = false;
     var y = window.scrollY;
     var mid = y + window.innerHeight * 0.4;
     if (header) header.classList.toggle('is-stuck', y > 12);
+    if (toTop) toTop.classList.toggle('is-shown', y > window.innerHeight * 0.8);
     var atBottom = y + window.innerHeight >= document.documentElement.scrollHeight - 40;
     var active = null;
     spySections.forEach(function (s) { if (s.offsetTop <= mid) active = s.id; });
